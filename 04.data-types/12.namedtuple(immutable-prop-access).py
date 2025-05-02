@@ -35,7 +35,7 @@ weight_log = [
 labeled_entries = []
 
 for species, sex, body_mass in weight_log:
-  labeled_entries.append(SpeciesDetails(species, sex, body_mass))
+    labeled_entries.append(SpeciesDetails(species, sex, body_mass))
 
 print(labeled_entries)
 print(labeled_entries[:5])
@@ -64,5 +64,5 @@ print(labeled_entries[1].species)
 # ]
 
 for entry in labeled_entries[:20]:
-  if entry.species == "Chinstrap":
-    print(f"{entry.sex}:{entry.body_mass}")
+    if entry.species == "Chinstrap":
+        print(f"{entry.sex}:{entry.body_mass}")

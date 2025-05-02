@@ -26,11 +26,11 @@ print(list(enumerate(pairs)))
 # Iterate over pairs while keeping track of position using enumerate()
 for rank, pair in enumerate(pairs):  # or you could say enumerate(pairs, start=0)
 
-  # unpack the tuple
-  girl_name, boy_name = pair
+    # unpack the tuple
+    girl_name, boy_name = pair
 
-  # Print formatted output; print(f'...') is like template literal in JS
-  print(f"Rank {rank + 1}: {girl_name} and {boy_name}")
+    # Print formatted output; print(f'...') is like template literal in JS
+    print(f"Rank {rank + 1}: {girl_name} and {boy_name}")
 
 # zip(girl_names, boy_names) → Combines lists into pairs
 # enumerate(pairs) → Adds a ranking number

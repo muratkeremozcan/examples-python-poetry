@@ -13,7 +13,7 @@ top_ten_girl_names = [
 
 # Looping through the list and unpacking each tuple
 for top_ten_rank, name in top_ten_girl_names:
-  print(f"Rank #: {top_ten_rank} - {name}")
+    print(f"Rank #: {top_ten_rank} - {name}")
 
 
 ##############

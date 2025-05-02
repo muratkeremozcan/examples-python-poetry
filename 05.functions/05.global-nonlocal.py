@@ -6,22 +6,22 @@ x = 50
 
 
 def one():
-  x = 10  # local var assignment doesn't effect the global variable (like const in JS)
+    x = 10  # local var assignment doesn't effect the global variable (like const in JS)
 
 
 def two():
-  global x  # using the global assignment effects the global variable (like let in JS)
-  x = 30
+    global x  # using the global assignment effects the global variable (like let in JS)
+    x = 30
 
 
 def three():
-  x = 100  # local var assignment doesn't effect the global variable (like const in JS)
-  print(x)
+    x = 100  # local var assignment doesn't effect the global variable (like const in JS)
+    print(x)
 
 
 for func in [one, two, three]:
-  func()
-  print(x)
+    func()
+    print(x)
 
 
 ##########
@@ -33,15 +33,15 @@ call_count = 0
 
 
 def my_function():
-  # Use a keyword that lets us update call_count
-  global call_count
-  call_count += 1
+    # Use a keyword that lets us update call_count
+    global call_count
+    call_count += 1
 
-  print("You've called my_function() {} times!".format(call_count))
+    print("You've called my_function() {} times!".format(call_count))
 
 
 for _ in range(10):
-  my_function()
+    my_function()
 
 
 ######

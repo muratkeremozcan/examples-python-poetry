@@ -7,18 +7,20 @@ from functools import wraps
 
 
 def run_n_times(n):
-  def decorator(func):
-    def wrapper(*args, **kwargs):
-      for _ in range(n):
-        func(*args, **kwargs)
-      return None
-    return wrapper
-  return decorator
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(n):
+                func(*args, **kwargs)
+            return None
+
+        return wrapper
+
+    return decorator
 
 
 @run_n_times(3)
 def sum(a, b):
-  print(a + b)
+    print(a + b)
 
 
 print(sum(1, 2))
@@ -27,57 +29,63 @@ print(sum(1, 2))
 #############
 # - html: Wraps the function’s return value with custom HTML tags.
 
+
 def html(open_tag, close_tag):
-  def decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-      msg = func(*args, **kwargs)
-      return '{}{}{}'.format(open_tag, msg, close_tag)
-    return wrapper
-  return decorator
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            msg = func(*args, **kwargs)
+            return "{}{}{}".format(open_tag, msg, close_tag)
+
+        return wrapper
+
+    return decorator
 
 
-@html('<b>', '</b>')
+@html("<b>", "</b>")
 def hello(name):
-  return 'Hello {}!'.format(name)
+    return "Hello {}!".format(name)
 
 
-print(hello('Alice'))
+print(hello("Alice"))
 
 
-@html('<i>', '</i>')
+@html("<i>", "</i>")
 def goodbye(name):
-  return 'Goodbye {}!'.format(name)
+    return "Goodbye {}!".format(name)
 
 
-print(goodbye('Alice'))
+print(goodbye("Alice"))
 
 
-@html('<div>', '</div>')
+@html("<div>", "</div>")
 def hello_goodbye(name):
-  return '\n{}\n{}\n'.format(hello(name), goodbye(name))
+    return "\n{}\n{}\n".format(hello(name), goodbye(name))
 
 
-print(hello_goodbye('Alice'))
+print(hello_goodbye("Alice"))
 
 
 #######
 #  a decorator that will let you tag your functions with an arbitrary list of tags
 
+
 def tag(*tags):
-  def decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-      return func(*args, **kwargs)
-    wrapper.tags = tags
-    return wrapper
-  # Return the new decorator
-  return decorator
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            return func(*args, **kwargs)
+
+        wrapper.tags = tags
+        return wrapper
+
+    # Return the new decorator
+    return decorator
 
 
-@tag('test', 'this is a tag')
+@tag("test", "this is a tag")
 def foo():
-  pass
+    pass
 
 
 print(foo.tags)
@@ -87,35 +95,38 @@ print(foo.tags)
 
 
 def returns(return_type):
-  def decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-      result = func(*args, **kwargs)
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
 
-      assert isinstance(result, return_type), f"Expected {
-          return_type}, but got {type(result)}"
-      return result
-    return wrapper
-  return decorator
+            assert isinstance(
+                result, return_type
+            ), f"Expected {return_type}, but got {type(result)}"
+            return result
+
+        return wrapper
+
+    return decorator
 
 
 @returns(list)
 def foo(value):
-  return value
+    return value
 
 
 try:
-  print(foo([1, 2, 3]))
+    print(foo([1, 2, 3]))
 except AssertionError:
-  print('foo() did not return a dict!')
+    print("foo() did not return a dict!")
 
 
 @returns(dict)
 def foo2(value):
-  return value
+    return value
 
 
 try:
-  print(foo2([1, 2, 3]))
+    print(foo2([1, 2, 3]))
 except AssertionError:
-  print('foo() did not return a dict!')
+    print("foo() did not return a dict!")

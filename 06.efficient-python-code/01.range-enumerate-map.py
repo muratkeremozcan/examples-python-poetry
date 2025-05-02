@@ -2,7 +2,7 @@
 
 # in python:
 # •	range, enumerate, map → return iterators (lazy, efficient)  (they don't return an array like in JS)
-#	•	Iterators aren’t lists — they need to be “unpacked” or “materialized” to become list
+# 	•	Iterators aren’t lists — they need to be “unpacked” or “materialized” to become list
 # - unpack iterators with list(...) or [*...]
 
 # - enumerate (and unpacked enumerate via [*enumerate(...)] / [list(enumerate(...))] / unpacking in comprehensions) attaches indices to elements.
@@ -11,37 +11,41 @@
 
 # Create a range object that goes from 0 to 5
 nums = range(5)
-print(type(nums), '\n')
+print(type(nums), "\n")
 
-# convert to lists with list(...) or [*...] 
+# convert to lists with list(...) or [*...]
 nums_list = list(range(5))
-nums_list2 = [*range(5), ]
-print(nums_list,)
-print(nums_list2, '\n')
+nums_list2 = [
+    *range(5),
+]
+print(
+    nums_list,
+)
+print(nums_list2, "\n")
 
 # range(start, stop, step)
 nums_list2 = [*range(1, 12, 2)]
 # list(range(..)) same as [*range(..)]
 num_list3 = list(range(1, 12, 2))
 print(nums_list2)
-print(num_list3, '\n')
+print(num_list3, "\n")
 
 # enumerate
 
-names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+names = ["Jerry", "Kramer", "Elaine", "George", "Newman"]
 
 # enumerate (and unpacked enumerate via [*enumerate(...)] / [list(enumerate(...))] / unpacking in comprehensions) attaches indices to elements.
 
 indexed_names_0 = []
 for i in range(len(names)):
-  index_name = (i, names[i])
-  indexed_names_0.append(index_name)
+    index_name = (i, names[i])
+    indexed_names_0.append(index_name)
 print(indexed_names_0)
 
 indexed_names_1 = []
 for i, name in enumerate(names):
-  index_name = (i, name)  # (0, 'Jerry')...
-  indexed_names_1.append(index_name)
+    index_name = (i, name)  # (0, 'Jerry')...
+    indexed_names_1.append(index_name)
 print(indexed_names_1)
 
 # using list comprehension
@@ -53,10 +57,10 @@ print(indexed_names_comp_3)
 indexed_names_unpack_4 = [*enumerate(names, 0)]
 print(indexed_names_unpack_4)
 indexed_names_unpack_5 = list(enumerate(names, 0))
-print(indexed_names_unpack_5, '\n')
+print(indexed_names_unpack_5, "\n")
 
 # map
-names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
+names = ["Jerry", "Kramer", "Elaine", "George", "Newman"]
 
 # Use map to apply str.upper to each element in names
 names_map = map(str.upper, names)

@@ -82,8 +82,8 @@ penguins = [
 ]
 
 for penguin in penguins:
-  if penguin["body_mass"] > 3300:
-    print(f"{penguin['species']} - {penguin['sex']}")
+    if penguin["body_mass"] > 3300:
+        print(f"{penguin['species']} - {penguin['sex']}")
 
 #########
 
@@ -97,12 +97,12 @@ penguin_305_details = {
 
 
 if penguin_305_details["sex"]:
-  sex_is_true = penguin_305_details["sex"] is True
-  print(f"{penguin_305_details['sex']}: {sex_is_true}")
+    sex_is_true = penguin_305_details["sex"] is True
+    print(f"{penguin_305_details['sex']}: {sex_is_true}")
 
 if penguin_305_details["tracked"]:
-  tracked_is_true = penguin_305_details["tracked"] is True
-  print(f"{penguin_305_details['tracked']}: {tracked_is_true}")
+    tracked_is_true = penguin_305_details["tracked"] is True
+    print(f"{penguin_305_details['tracked']}: {tracked_is_true}")
 
 
 ######

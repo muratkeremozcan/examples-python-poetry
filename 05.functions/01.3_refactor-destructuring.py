@@ -1,41 +1,46 @@
 from typing import Iterable, Tuple
 
+
 def mean_and_median(values: Iterable[float]) -> Tuple[float, float]:
-  """Get the mean and median of a sorted list of `values`
+    """Get the mean and median of a sorted list of `values`
 
-  Args:
-    values (iterable of float): A list of numbers
+    Args:
+      values (iterable of float): A list of numbers
 
-  Returns:
-    tuple (float, float): The mean and median
-  """
-  mean = sum(values) / len(values)
-  values = sorted(values)
-  midpoint = int(len(values) / 2)
-  if len(values) % 2 == 0:
-    median = (values[midpoint - 1] + values[midpoint]) / 2
-  else:
-    median = values[midpoint]
+    Returns:
+      tuple (float, float): The mean and median
+    """
+    mean = sum(values) / len(values)
+    values = sorted(values)
+    midpoint = int(len(values) / 2)
+    if len(values) % 2 == 0:
+        median = (values[midpoint - 1] + values[midpoint]) / 2
+    else:
+        median = values[midpoint]
 
-  return mean, median
+    return mean, median
+
 
 # refactor the above to be piece-meal
 def mean(values: Iterable[float]) -> float:
-	"""Calculate the mean of a sequence of floats."""
-	return sum(values) / len(values)
+    """Calculate the mean of a sequence of floats."""
+    return sum(values) / len(values)
+
 
 def median(values: Iterable[float]) -> float:
-  values = sorted(values)
-  midpoint = int(len(values) / 2)
-  if len(values) % 2 == 0:
-    median = (values[midpoint - 1] + values[midpoint]) / 2
-  else:
-    median = values[midpoint]
+    values = sorted(values)
+    midpoint = int(len(values) / 2)
+    if len(values) % 2 == 0:
+        median = (values[midpoint - 1] + values[midpoint]) / 2
+    else:
+        median = values[midpoint]
 
-  return median
+    return median
+
 
 def mean_and_median(values: Iterable[float]) -> Tuple[float, float]:
-	return mean(values), median(values)
+    return mean(values), median(values)
+
 
 ######## usage
 

@@ -32,24 +32,24 @@ print(rs_dict)
 
 
 def lists2dict(list1, list2):
-  """
-  Convert two lists into a dictionary, where list1 provides keys and list2 provides values.
+    """
+    Convert two lists into a dictionary, where list1 provides keys and list2 provides values.
 
-  Parameters:
-  - list1 (list): Keys (e.g., column names)
-  - list2 (list): Values (e.g., row values)
+    Parameters:
+    - list1 (list): Keys (e.g., column names)
+    - list2 (list): Values (e.g., row values)
 
-  Returns:
-  - dict: Dictionary mapping keys to values
-  """
+    Returns:
+    - dict: Dictionary mapping keys to values
+    """
 
-  # Zip lists together
-  zipped_lists = zip(list1, list2)
+    # Zip lists together
+    zipped_lists = zip(list1, list2)
 
-  # Convert zipped lists into a dictionary
-  rs_dict = dict(zipped_lists)
+    # Convert zipped lists into a dictionary
+    rs_dict = dict(zipped_lists)
 
-  return rs_dict
+    return rs_dict
 
 
 # Convert first row to a dictionary using the function

@@ -4,11 +4,11 @@ raw_text = "I LoVe dATaCamP"
 
 
 def clean_text(text, lower=True):
-  """Swap spaces to underscores and convert text to lowercase."""  # single line docstring
-  if not lower:
-    return text.replace(" ", "_")
-  else:
-    return text.replace(" ", "_").lower()
+    """Swap spaces to underscores and convert text to lowercase."""  # single line docstring
+    if not lower:
+        return text.replace(" ", "_")
+    else:
+        return text.replace(" ", "_").lower()
 
 
 print(clean_text.__doc__)
@@ -21,20 +21,20 @@ print(clean_text(raw_text))
 
 
 def clean_text_remove(text, remove=None):
-  """
-  Remove a specific substring from text and convert it to lowercase.
+    """
+    Remove a specific substring from text and convert it to lowercase.
 
-  Args:
-      text (str): The input string to clean.
-      remove (Optional[str]): The substring to remove. If None, no removal occurs. Defaults to None.
+    Args:
+        text (str): The input string to clean.
+        remove (Optional[str]): The substring to remove. If None, no removal occurs. Defaults to None.
 
-  Returns:
-      str: The cleaned text with the specified substring removed and converted to lowercase.
-  """
-  if remove is not None:
-    return text.replace(remove, "").lower()
-  else:
-    return text.lower()
+    Returns:
+        str: The cleaned text with the specified substring removed and converted to lowercase.
+    """
+    if remove is not None:
+        return text.replace(remove, "").lower()
+    else:
+        return text.lower()
 
 
 print(clean_text_remove(raw_text, "L"))
@@ -50,28 +50,28 @@ print(clean_text_remove(text=raw_text, remove="L"))
 
 
 def convert_data_structure(data, data_type="list"):
-  """
-  Convert a data structure to a list, tuple, or set.
+    """
+    Convert a data structure to a list, tuple, or set.
 
-  Args:
-        data (list, tuple, or set): A data structure to be converted.
-    data_type (str): String representing the type of structure to convert data to.
+    Args:
+          data (list, tuple, or set): A data structure to be converted.
+      data_type (str): String representing the type of structure to convert data to.
 
-  Returns:
-        data (list, tuple, or set): Converted data structure.
-  """
-  # Add a condition to check if data_type is "tuple"
-  if data_type == "tuple":
-    data = tuple(data)
+    Returns:
+          data (list, tuple, or set): Converted data structure.
+    """
+    # Add a condition to check if data_type is "tuple"
+    if data_type == "tuple":
+        data = tuple(data)
 
-  # Else if data_type is set, convert to a set
-  elif data_type == "set":
-    data = set(data)
+    # Else if data_type is set, convert to a set
+    elif data_type == "set":
+        data = set(data)
 
-  else:
-    data = list(data)
+    else:
+        data = list(data)
 
-  return data
+    return data
 
 
 some_data = {"a", 1, "b", 2, "c", 3}

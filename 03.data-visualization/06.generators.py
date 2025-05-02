@@ -36,7 +36,7 @@ print(next(result))  # 4
 
 # The generator is now at position 5, and will continue from there
 for value in result:
-  print(value)  # Prints remaining values up to 30
+    print(value)  # Prints remaining values up to 30
 
 
 #############
@@ -59,7 +59,7 @@ lengths = (len(person) for person in lannister)
 
 # Iterating over generator to fetch values
 for value in lengths:
-  print(value)  # Prints lengths of each name
+    print(value)  # Prints lengths of each name
 
 
 #############
@@ -69,18 +69,18 @@ for value in lengths:
 
 # Define generator function get_lengths
 def get_lengths(input_list):
-  """Generator function that yields the
-  length of the strings in input_list."""
+    """Generator function that yields the
+    length of the strings in input_list."""
 
-  # Yield the length of a string one at a time
-  for person in input_list:
-    yield len(
-        person
-    )  # Instead of returning all at once, it lazily yields one-by-one
+    # Yield the length of a string one at a time
+    for person in input_list:
+        yield len(
+            person
+        )  # Instead of returning all at once, it lazily yields one-by-one
 
 
 # Calling the generator function and iterating over it
 for value in get_lengths(lannister):
-  print(
-      value
-  )  # Prints the lengths of names, just like the generator expression above
+    print(
+        value
+    )  # Prints the lengths of names, just like the generator expression above

@@ -6,14 +6,14 @@
 
 # the decorator
 def double_args(func):
-  def wrapper(a, b):
-    return func(a * 2, b * 2)
+    def wrapper(a, b):
+        return func(a * 2, b * 2)
 
-  return wrapper
+    return wrapper
 
 
 def multiply(a, b):
-  return a * b
+    return a * b
 
 
 multiplyD = double_args(multiply)
@@ -24,7 +24,7 @@ multiplyD(1, 5)  # ?
 
 @double_args
 def multiplyD(a, b):
-  return a * b
+    return a * b
 
 
 multiplyD(1, 5)  # ?
@@ -35,16 +35,16 @@ multiplyD(1, 5)  # ?
 
 # the decorator
 def print_args(func):
-  # *args captures any extra positional arguments (the “regular” ones), and **kwargs captures any extra named (keyword) arguments
-  def wrapper(*args, **kwargs):
-    print("Called with arguments:", args, kwargs)
-    return func(*args, **kwargs)
+    # *args captures any extra positional arguments (the “regular” ones), and **kwargs captures any extra named (keyword) arguments
+    def wrapper(*args, **kwargs):
+        print("Called with arguments:", args, kwargs)
+        return func(*args, **kwargs)
 
-  return wrapper
+    return wrapper
 
 
 def my_function(a, b, c):
-  print(a + b + c)
+    print(a + b + c)
 
 
 my_functionD = print_args(my_function)
@@ -56,7 +56,7 @@ my_function(1, 2, 3)
 
 @print_args
 def my_function2(a, b, c):
-  print(a + b + c)
+    print(a + b + c)
 
 
 my_function2(4, 5, 6)
@@ -66,19 +66,19 @@ my_function2(4, 5, 6)
 
 
 def print_before_and_after(func):
-  def wrapper(*args):
-    print("Before {}".format(func.__name__))
-    # Call the function being decorated with *args
-    func(*args)
-    print("After {}".format(func.__name__))
+    def wrapper(*args):
+        print("Before {}".format(func.__name__))
+        # Call the function being decorated with *args
+        func(*args)
+        print("After {}".format(func.__name__))
 
-  # Return the nested function
-  return wrapper
+    # Return the nested function
+    return wrapper
 
 
 @print_before_and_after
 def multiply(a, b):
-  print(a * b)
+    print(a * b)
 
 
 multiply(5, 10)

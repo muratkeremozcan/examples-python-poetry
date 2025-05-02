@@ -93,14 +93,14 @@ print(squirrels_by_park)
 # The loop then iterates through the dictionary keys and uses list comprehension to extract the
 # 'primary_fur_color' from each squirrel dictionary, using get() to safely handle missing keys.
 for park_name in squirrels_by_park:
-  # [output_if_true | for variable in iterable]
-  print(
-      park_name,
-      [
-          squirrel.get("primary_fur_color", "N/A")
-          for squirrel in squirrels_by_park[park_name]
-      ],
-  )
+    # [output_if_true | for variable in iterable]
+    print(
+        park_name,
+        [
+            squirrel.get("primary_fur_color", "N/A")
+            for squirrel in squirrels_by_park[park_name]
+        ],
+    )
 
 # pop() : like Js array.pop(), removes data and saves it off
 squirrels_madison = squirrels_by_park.pop("Madison Square Park")

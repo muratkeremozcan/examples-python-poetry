@@ -9,7 +9,7 @@ flash = ["jay garrick", "barry allen", "wally west", "bart allen"]
 
 # Loop over the list normally and print values
 for f in flash:
-  print(f)
+    print(f)
 
 # Convert the list into an iterator
 superhero = iter(flash)
@@ -35,7 +35,7 @@ print(next(small_value))
 
 # Looping over range() directly eliminates the need for iter() and next().
 for v in range(3):
-  print(v)
+    print(v)
 
 # Large ranges can be iterated over lazily without memory issues.
 googol = iter(range(10**100))

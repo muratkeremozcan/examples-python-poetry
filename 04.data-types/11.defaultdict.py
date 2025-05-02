@@ -16,13 +16,13 @@ weight_log = [
 female_penguin_weights = {}
 
 for species, sex, body_mass in weight_log:
-  if sex == "FEMALE":
-    # if species is already in the dictionary, create an empty list for any
-    # missing species
-    if species not in female_penguin_weights:
-      female_penguin_weights[species] = []
-    # Append the sex and body_mass as a tuple to the species keys list
-    female_penguin_weights[species].append((sex, body_mass))
+    if sex == "FEMALE":
+        # if species is already in the dictionary, create an empty list for any
+        # missing species
+        if species not in female_penguin_weights:
+            female_penguin_weights[species] = []
+        # Append the sex and body_mass as a tuple to the species keys list
+        female_penguin_weights[species].append((sex, body_mass))
 
 print(female_penguin_weights["Adlie"])
 
@@ -40,8 +40,8 @@ print(female_penguin_weights)
 female_penguin_weights = defaultdict(list)
 
 for species, sex, body_mass in weight_log:
-  if sex == "FEMALE":
-    female_penguin_weights[species].append((sex, body_mass))
+    if sex == "FEMALE":
+        female_penguin_weights[species].append((sex, body_mass))
 
 
 ################
@@ -51,14 +51,14 @@ for species, sex, body_mass in weight_log:
 male_penguin_weights = {}
 
 for species, sex, body_mass in weight_log:
-  if sex == "MALE":
-    # Check if species is already in the dictionary, if not, initialize with
-    # an empty list
-    if species not in male_penguin_weights:
-      male_penguin_weights[species] = []
+    if sex == "MALE":
+        # Check if species is already in the dictionary, if not, initialize with
+        # an empty list
+        if species not in male_penguin_weights:
+            male_penguin_weights[species] = []
 
-    # Append body_mass to the corresponding species list
-    male_penguin_weights[species].append(body_mass)
+        # Append body_mass to the corresponding species list
+        male_penguin_weights[species].append(body_mass)
 
 print(male_penguin_weights)
 # {
@@ -72,9 +72,9 @@ print(male_penguin_weights)
 male_penguin_weights = defaultdict(list)
 
 for species, sex, body_mass in weight_log:
-  if sex == "MALE":
-    # Use the species as the key, and append the body_mass to it
-    male_penguin_weights[species].append(body_mass)
+    if sex == "MALE":
+        # Use the species as the key, and append the body_mass to it
+        male_penguin_weights[species].append(body_mass)
 
 
 print(list(male_penguin_weights))

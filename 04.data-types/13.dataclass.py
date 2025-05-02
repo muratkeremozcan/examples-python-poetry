@@ -7,17 +7,17 @@ from dataclasses import asdict, astuple, dataclass
 
 @dataclass
 class WeightEntry:
-  species: str
-  sex: str
-  body_mass: int
-  flipper_length: int
+    species: str
+    sex: str
+    body_mass: int
+    flipper_length: int
 
-  @property
-  def mass_to_flipper_length_ratio(self):
-    return self.body_mass / self.flipper_length
+    @property
+    def mass_to_flipper_length_ratio(self):
+        return self.body_mass / self.flipper_length
 
-  def set_mass_to_flipper_length_ratio(self, ratio: float):
-    self.body_mass = int(self.flipper_length * ratio)
+    def set_mass_to_flipper_length_ratio(self, ratio: float):
+        self.body_mass = int(self.flipper_length * ratio)
 
 
 entry = WeightEntry("Adlie", "FEMALE", 3700, 185)
@@ -81,7 +81,7 @@ weight_log = [
 labeled_entries = []
 
 for species, sex, body_mass, flipper_length in weight_log:
-  labeled_entries.append(WeightEntry(species, sex, body_mass, flipper_length))
+    labeled_entries.append(WeightEntry(species, sex, body_mass, flipper_length))
 
 # Print a list of the first 5 mass_to_flipper_length_ratio values
 print([entry.mass_to_flipper_length_ratio for entry in labeled_entries[:5]])

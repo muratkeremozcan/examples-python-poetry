@@ -20,7 +20,7 @@ squirrels = [
 squirrels_by_park = {}
 
 for park, squirrel_details in squirrels:
-  squirrels_by_park[park] = squirrel_details
+    squirrels_by_park[park] = squirrel_details
 
 print(squirrels_by_park)
 # {
@@ -36,7 +36,7 @@ print(squirrels_by_park)
 
 
 for park in sorted(squirrels_by_park):
-  print(f"{park}: {squirrels_by_park[park]}")
+    print(f"{park}: {squirrels_by_park[park]}")
 # City Hall Park: ('Gray', 'Cinnamon', 'Eating', 'Approaches')
 # Highbridge Park: ('Gray', 'Cinnamon', 'Running, Eating', 'Runs From, watches us in short tree')
 # J.Hood Wright Park: ('Gray', 'White', 'Running', 'Indifferent')
@@ -195,16 +195,16 @@ print(squirrels_by_park)
 
 # Loop over the park_name in the squirrels_by_park dictionary
 for park_name in squirrels_by_park:
-  # Safely print a list of the primary_fur_color for each squirrel in park_name
-  if isinstance(squirrels_by_park[park_name], list):
-    # For parks with list of dictionary values
-    print(
-        park_name,
-        [
-            squirrel.get("primary_fur_color", "N/A")
-            for squirrel in squirrels_by_park[park_name]
-        ],
-    )
-  else:
-    # For parks with tuple values
-    print(park_name, ["N/A"])
+    # Safely print a list of the primary_fur_color for each squirrel in park_name
+    if isinstance(squirrels_by_park[park_name], list):
+        # For parks with list of dictionary values
+        print(
+            park_name,
+            [
+                squirrel.get("primary_fur_color", "N/A")
+                for squirrel in squirrels_by_park[park_name]
+            ],
+        )
+    else:
+        # For parks with tuple values
+        print(park_name, ["N/A"])

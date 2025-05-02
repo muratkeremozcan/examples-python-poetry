@@ -24,11 +24,11 @@ print(mutant_list)
 
 # Iterate through enumerate() normally, unpacking the index and value.
 for index, value in enumerate(mutants):
-  print(index, value)
+    print(index, value)
 
 # Change the starting index to 1 using the start parameter.
 for index, value in enumerate(mutants, start=1):
-  print(index, value)
+    print(index, value)
 
 
 ####################
@@ -57,7 +57,7 @@ print(mutant_zip)  # Outputs a zip object reference, not the data.
 
 # Iterating through a zip object unpacks values from all three lists.
 for value1, value2, value3 in mutant_zip:
-  print(value1, value2, value3)
+    print(value1, value2, value3)
 
 ###############
 # Creating a zip object from two lists.

@@ -4,16 +4,16 @@
 
 
 def snake_case(text):
-  # Use a keyword allowing you to attempt to run code that cleans text
-  try:
-    # swap a space for a single underscore in the text argument.
-    return text.replace(" ", "_").lower()
-  # Run this code if an error occurs
-  except BaseException:
-    print(
-        "The snake_case() function expects a string as an argument, please check the data type provided."
-    )
-    return None
+    # Use a keyword allowing you to attempt to run code that cleans text
+    try:
+        # swap a space for a single underscore in the text argument.
+        return text.replace(" ", "_").lower()
+    # Run this code if an error occurs
+    except BaseException:
+        print(
+            "The snake_case() function expects a string as an argument, please check the data type provided."
+        )
+        return None
 
 
 ############################################
@@ -27,14 +27,14 @@ print(snake_case("User Name 187"))
 
 
 def snake_case2(text):
-  # Check the data type
-  if isinstance(text, str):
-    return text.replace(" ", "_").lower()
+    # Check the data type
+    if isinstance(text, str):
+        return text.replace(" ", "_").lower()
 
-  else:
-    raise TypeError(
-        "The snake_case() function expects a string as an argument, please check the data type provided."
-    )
+    else:
+        raise TypeError(
+            "The snake_case() function expects a string as an argument, please check the data type provided."
+        )
 
 
 print(snake_case2("User Name 187"))

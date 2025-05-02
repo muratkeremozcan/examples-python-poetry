@@ -7,13 +7,13 @@
 
 # Define a function called concat() that accepts arbitrary arguments called arg
 def concat1(*args):
-  # Create a variable called result and assign an empty string to it
-  result = ""
+    # Create a variable called result and assign an empty string to it
+    result = ""
 
-  # Use a for loop to iterate over each arg in args.
-  for arg in args:
-    result += " " + arg
-  return result
+    # Use a for loop to iterate over each arg in args.
+    for arg in args:
+        result += " " + arg
+    return result
 
 
 # Call the function
@@ -36,14 +36,14 @@ print(concat1("Python", "is", "great!"))
 
 # Define concat() as a function that accepts arbitrary keyword arguments called kwargs.
 def concat2(**kwargs):
-  # Create a variable called result and assign an empty string to it
-  result = ""
+    # Create a variable called result and assign an empty string to it
+    result = ""
 
-  # Inside the function, loop over the keyword argument values, using kwarg
-  # as the iterator.
-  for kwarg in kwargs.values():
-    result += " " + kwarg
-  return result
+    # Inside the function, loop over the keyword argument values, using kwarg
+    # as the iterator.
+    for kwarg in kwargs.values():
+        result += " " + kwarg
+    return result
 
 
 print(concat2(start="Python", middle="is", end="great!"))

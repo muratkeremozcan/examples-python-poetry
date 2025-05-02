@@ -7,7 +7,7 @@ doctor = ["house", "cuddy", "chase", "thirteen", "wilson"]
 
 # Regular for loop
 for doc in doctor:
-  print(doc)
+    print(doc)
 
 # List comprehension version (not ideal for side effects like print)
 # [output_if_true | for variable in iterable | if condition]
@@ -22,7 +22,7 @@ list(map(print, doctor))
 
 # For loop version
 for doc in doctor:
-  print(doc[0])
+    print(doc[0])
 
 # List comprehension version
 # [output_if_true | for variable in iterable | if condition]
@@ -43,7 +43,7 @@ print(squared_numbers)
 # Traditional for loop version
 squared_numbers_loop = []
 for i in range(10):
-  squared_numbers_loop.append(i**2)
+    squared_numbers_loop.append(i**2)
 print(squared_numbers_loop)
 
 # map() version with lambda
@@ -67,7 +67,7 @@ print([col for col in range(5)])
 # 1 row using a for loop
 row_list = []
 for col in range(5):
-  row_list.append(col)
+    row_list.append(col)
 print(row_list)
 
 # 1 row using map()
@@ -90,19 +90,17 @@ print(matrix_map)
 # For loop version
 matrix = []
 for col in range(5):  # rows
-  row_list = []  # empty list for each row
-  for row in range(5):  # columns
-    row_list.append(col)  # Append col value to row
-  matrix.append(row_list)  # Append the row to the matrix
+    row_list = []  # empty list for each row
+    for row in range(5):  # columns
+        row_list.append(col)  # Append col value to row
+    matrix.append(row_list)  # Append the row to the matrix
 print(matrix)
 
 
 # Function versions for creating matrices
 # List comprehension version as a function
 def matrix_lambda_comp(rows, cols):
-  return [
-      [col for col in range(cols)] for row in range(rows)
-  ]
+    return [[col for col in range(cols)] for row in range(rows)]
 
 
 print(matrix_lambda_comp(5, 5))
@@ -111,9 +109,7 @@ print(matrix_lambda_comp(5, 5))
 
 
 def matrix_lambda_map(rows, cols):
-  return list(
-      map(lambda _: list(map(lambda col: col, range(cols))), range(rows))
-  )
+    return list(map(lambda _: list(map(lambda col: col, range(cols))), range(rows)))
 
 
 print(matrix_lambda_map(5, 5))
@@ -121,13 +117,13 @@ print(matrix_lambda_map(5, 5))
 
 # Regular function version
 def create_matrix(rows, cols):
-  matrix = []
-  for col in range(rows):  # rows
-    row_list = []  # empty list for each row
-    for row in range(cols):  # columns
-      row_list.append(col)  # Append col value to row
-    matrix.append(row_list)
-  return matrix
+    matrix = []
+    for col in range(rows):  # rows
+        row_list = []  # empty list for each row
+        for row in range(cols):  # columns
+            row_list.append(col)  # Append col value to row
+        matrix.append(row_list)
+    return matrix
 
 
 print(create_matrix(5, 5))

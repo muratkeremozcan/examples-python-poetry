@@ -6,12 +6,12 @@
 # with context-manager(args) as variable-name
 # with context-manager()
 with open("alice.txt") as file:
-  text = file.read()
+    text = file.read()
 # we have some file directory issues here, better version next file
 n = 0
 for word in text.split():
-  if word.lower() in ["cat", "cats"]:
-    n += 1
+    if word.lower() in ["cat", "cats"]:
+        n += 1
 
 print('Lewis Carroll uses the word "cat" {} times'.format(n))
 

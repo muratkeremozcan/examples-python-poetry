@@ -4,7 +4,7 @@ sale_price = 29.99
 
 
 def add_tax(x):
-  return x * 1.2
+    return x * 1.2
 
 
 # Call the lambda function

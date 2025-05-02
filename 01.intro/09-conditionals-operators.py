@@ -4,11 +4,11 @@ inflation_august = 3.5
 
 # Check if September inflation is less than August inflation
 if inflation_september < inflation_august:
-  print("Inflation decreased")
+    print("Inflation decreased")
 elif inflation_september > inflation_august:
-  print("Inflation increased")
+    print("Inflation increased")
 else:
-  print("Inflation remained stable")
+    print("Inflation remained stable")
 
 #########
 
@@ -25,12 +25,12 @@ rent = 1800
 
 # Check the number of beds
 if num_beds < min_num_beds:
-  print("Insufficient bedrooms")
+    print("Insufficient bedrooms")
 # Check square feet
 elif sq_foot <= min_sq_foot:
-  print("Too small")
+    print("Too small")
 # Check the rent
 elif rent > max_rent:
-  print("Too expensive")
+    print("Too expensive")
 else:
-  print("This looks promising!")
+    print("This looks promising!")
