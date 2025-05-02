@@ -1,0 +1,48 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: "**/requirements.txt"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install flake8 mypy pandas-stubs
+
+      # Only check for syntax errors and undefined names
+      - name: Check code quality with flake8
+        run: |
+          python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      # Find all Python files and check their syntax
+      - name: Check Python syntax
+        run: |
+          find . -name "*.py" -type f -exec python -m py_compile {} +
+
+      # Run mypy type checking
+      # - name: Run type checking with mypy
+      #   run: |
+      #     python -m mypy --config-file=mypy.ini .
+
+# Using python -m mypy instead of direct mypy command ensures the tool is run
+# through the Python interpreter installed in the current environment, avoiding path resolution issues.
+# This approach guarantees that the correct version of mypy is used and that it's properly found
+# even if the executable isn't directly in the system PATH

@@ -1,0 +1,13 @@
+numpy==1.26.4
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pytz==2025.1
+six==1.17.0
+tzdata==2025.1
+flake8==7.1.2
+mypy==1.9.0
+matplotlib==3.8.2
+autopep8==2.0.4
+isort==5.13.2
+line-profiler==4.2.0
+memory-profiler==0.61.0
