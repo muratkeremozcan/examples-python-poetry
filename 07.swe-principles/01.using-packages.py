@@ -1,5 +1,9 @@
-from collections import Counter
+# Initialization Code: The init.py file can run initialization code when the package is imported (version etc.)
+# Package Structure Control: init.py gives you more control what is exposed, and allows a nested structure
+# Backward Compatibility: Using init.py ensures compatibility with older Python versions (pre-3.3).
+
 from text_analyzer import plot_counter, sum_counters
+from collections import Counter
 
 word_counts = [
     Counter(

@@ -1,5 +1,7 @@
+# when not using __init__ file, the import is more verbose with the directory included
+# all the functions are exposed from the package, instead of select ones
+from text_analyzer_no_init import plot_counter, sum_counters
 from collections import Counter
-from text_analyzer import plot_counter, sum_counters
 
 word_counts = [
     Counter(
