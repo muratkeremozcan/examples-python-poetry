@@ -22,7 +22,7 @@ jobs:
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
-          version: 1.8.2
+          version: 2.1.2
           virtualenvs-create: true
           virtualenvs-in-project: true
 
@@ -48,7 +48,6 @@ jobs:
       - name: Check Python syntax
         run: |
           poetry run python -c "import py_compile; import glob; [py_compile.compile(file) for file in glob.glob('**/*.py', recursive=True)]"
-
 
 # Using python -m mypy instead of direct mypy command ensures the tool is run
 # through the Python interpreter installed in the current environment, avoiding path resolution issues.
