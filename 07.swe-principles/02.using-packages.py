@@ -2,7 +2,7 @@
 # Package Structure Control: init.py gives you more control what is exposed, and allows a nested structure
 # Backward Compatibility: Using init.py ensures compatibility with older Python versions (pre-3.3).
 
-from text_analyzer import plot_counter, sum_counters
+from text_analyzer import Document, plot_counter, sum_counters
 from collections import Counter
 
 word_counts = [
@@ -10706,3 +10706,13 @@ word_counts = [
 
 word_count_totals = sum_counters(word_counts)
 plot_counter(word_count_totals)
+
+# using the class
+datacamp_tweet = 'Basic linear regression example. #DataCamp #DataScience #Python #sklearn'
+
+my_document0 = Document("Hello world")
+print(my_document0.text)
+my_document1 = Document(text=datacamp_tweet)
+print(my_document1.text)
+my_document2 = Document(datacamp_tweet)
+print(my_document2.text)
