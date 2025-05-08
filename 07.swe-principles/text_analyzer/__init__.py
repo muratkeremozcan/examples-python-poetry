@@ -1,5 +1,6 @@
 
 from .counter_utils import plot_counter, sum_counters
+from .document import Document
 
 # with __init__ file you can do these
 # # Example 1: Package metadata and version

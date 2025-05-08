@@ -71,3 +71,19 @@ rm poetry.lock && poetry install  # Start fresh
 | **Version Resolution**    | Manual conflict resolution                                     | Sophisticated dependency resolver                               |
 | **Configuration**         | Multiple files (`.flake8`, etc.)                               | Everything in `pyproject.toml`                                  |
 | **Command Usage**         | Needs manual env activation for each terminal                  | Tools work directly (`black .` instead of `poetry run black .`) |
+
+## Package Management: Pip vs Poetry
+
+| Feature                 | Pip                                                          | Poetry                                                     |
+| ----------------------- | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| **Config File**         | `requirements.txt` (flat list)                               | `pyproject.toml` (structured with sections)                |
+| **Lock File**           | None built-in (requires `pip-tools` for `requirements.lock`) | `poetry.lock` (automatically generated)                    |
+| **Package Creation**    | `setup.py` + `setup.cfg` (imperative)                        | `pyproject.toml` (declarative)                             |
+| **Publishing**          | `python setup.py sdist bdist_wheel` + `twine upload`         | `poetry build` + `poetry publish`                          |
+| **Git Dependencies**    | `git+https://github.com/user/repo.git@tag#egg=package`       | `{package = {git = "https://github.com/user/repo.git"}}`   |
+| **Cross-system Usage**  | Add git URL to `requirements.txt` to use Poetry packages     | `poetry export -f requirements.txt` to generate for pip    |
+| **Dev Dependencies**    | Separate file or mixed with production deps                  | Separate sections in same file (`[tool.poetry.group.dev]`) |
+| **Package Building**    | Multi-step process with setuptools                           | One command: `poetry build`                                |
+| **Private Packages**    | Reference private Git repos with auth in URL                 | Same, plus better support for private repositories         |
+| **Version Constraints** | Basic constraints (`==`, `>=`)                               | Extended constraints (`^`, `~`, `*`, etc.)                 |
+| **Package Format**      | Works with traditional and PEP 517 packages                  | Fully PEP 517 compliant                                    |
