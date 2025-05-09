@@ -10704,15 +10704,61 @@ word_counts = [
     ),
 ]
 
-word_count_totals = sum_counters(word_counts)
-plot_counter(word_count_totals)
+datacamp_tweets_array = [
+    "[DataCamp] Introduction to H2O AutoML --> In this tutorial, you will learn about H2O and have a glimpse of its auto...",
+    "[DataCamp] Stocks, Significance Testing & p-Hacking --> Learn how to manipulate time series data with pandas and co...",
+    "RT @cbismuth: Linear regression example with most significant features detection. #DataCamp #DataScience #Python #sklearn ...",
+    "Linear regression example with most significant features detection. #DataCamp #DataScience #Python #sklearn",
+    "Basic linear regression example. #DataCamp #DataScience #Python #sklearn",
+    "RT @David_Makinde_: I just completed Introduction to Python for Data Science \n#Datacamp\n#DataScience \n#Python",
+    "[DataCamp] Enter the #DataFramedChallenge for a chance to be on an upcoming podcast segment. --> DataCamp has a pod...",
+    "[DataCamp] Introduction to Python Metaclasses --> In this tutorial, you'll learn about metaclasses in Python. by De...",
+    "I just completed Introduction to Python for Data Science \n#Datacamp\n#DataScience \n#Python",
+    "RT @cbismuth: My pretty first classifier! #DataCamp #Python #sklearn",
+    "My pretty first classifier! #DataCamp #Python #sklearn",
+    "RT @ascentt: The different #DataScience roles on the job market. \n\n\n\n#SoftwareTesting #DataEngineer #DataScientist #..."
+    "The different #DataScience roles on the job market. \n\n\n\n#SoftwareTesting #DataEngineer...",
+    "Conseguí el contacto de una de las encargadas de la división informática de la OPP (gracias a la gente del...",
+    "Weapons of Math Destruction #datacamp #podcast",
+    "[DataCamp] Shareable Data Science with Kyso --> In this tutorial, you'll learn how to create publishable and reprod...",
+    "Studying has to be done every day, prepare yourself for the next opportunity. A leader must show how its done...",
+    "@DataCamp #learningR #programming #datacamp",
+    "Trilha incrível de Programação em Python do projeto DataCamp, concluída com sucesso! 🙌🙌🙌\n#DataCamp #DataScience...",
+    "Depois de um longo dia de trabalho é hora de investir no futuro. #OQueVamosAprenderHoje ?\n\n#datascience #dsa...",
+    "RT @charlyingsparks: This is so spot on. \n@DataCamp @hugobowne #DataFramedchallenge @hmason #empathy\n#datascience #datacamp ...",
+    "RT @gastronomy: [DataCamp] Naive Bayes Classification using Scikit-learn --> Learn how to build and evaluate a Naive Bayes Classifier using...",
+    "[DataCamp] Naive Bayes Classification using Scikit-learn --> Learn how to build and evaluate a Naive Bayes Classifi...",
+    "This is so spot on. \n@DataCamp @hugobowne #DataFramedchallenge @hmason #empathy\n#datascience #datacamp"
+]
+datacamp_tweets = "\n".join(datacamp_tweets_array)
+
+# word_count_totals = sum_counters(word_counts)
+# plot_counter(word_count_totals)
 
 # using the class
-datacamp_tweet = 'Basic linear regression example. #DataCamp #DataScience #Python #sklearn'
 
 my_document0 = Document("Hello world")
 print(my_document0.text)
-my_document1 = Document(text=datacamp_tweet)
+print(my_document0.tokens)
+print(my_document0.word_counts)
+print('#####')
+
+
+my_document1 = Document(text=datacamp_tweets_array[0])
 print(my_document1.text)
-my_document2 = Document(datacamp_tweet)
+print(my_document1.tokens)
+print(my_document1.word_counts)
+print('#####')
+
+my_document2 = Document(datacamp_tweets_array[0])
 print(my_document2.text)
+print(my_document2.tokens)
+print(my_document2.word_counts)
+
+
+#####
+print('#####')
+
+datacamp_doc = Document(datacamp_tweets)
+print(datacamp_doc.tokens[:5])
+print(datacamp_doc.word_counts.most_common(5))
