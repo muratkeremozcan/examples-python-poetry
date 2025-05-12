@@ -2,7 +2,7 @@
 # Package Structure Control: init.py gives you more control what is exposed, and allows a nested structure
 # Backward Compatibility: Using init.py ensures compatibility with older Python versions (pre-3.3).
 
-from text_analyzer import Document, plot_counter, sum_counters
+from text_analyzer import Document, SocialMedia, plot_counter, sum_counters
 from collections import Counter
 
 word_counts = [
@@ -10705,9 +10705,13 @@ word_counts = [
 ]
 
 datacamp_tweets_array = [
-    "[DataCamp] Introduction to H2O AutoML --> In this tutorial, you will learn about H2O and have a glimpse of its auto...",
-    "[DataCamp] Stocks, Significance Testing & p-Hacking --> Learn how to manipulate time series data with pandas and co...",
+    "[DataCamp] Introduction to H2O AutoML --> In this tutorial, you will learn about H2O and have a glimpse of its auto... #DataScience #MachineLearning",
+    "[DataCamp] Stocks, Significance Testing & p-Hacking --> Learn how to manipulate time series data with pandas and co... @DataCamp #pandas",
     "RT @cbismuth: Linear regression example with most significant features detection. #DataCamp #DataScience #Python #sklearn ...",
+    "Hey @DataCamp loving your courses! #learning #coding #DataScience",
+    "Just finished my #Python course at @DataCamp - highly recommend to @everyone #programming #datascience",
+    "@DataCamp and @Kaggle are my favorite platforms for #learning #datascience - thanks @MartinWattenberg and @fernandaviegas!",
+    "On my #learning journey with #Python #MachineLearning #DataScience with @DataCamp @kaggle @coursera",
     "Linear regression example with most significant features detection. #DataCamp #DataScience #Python #sklearn",
     "Basic linear regression example. #DataCamp #DataScience #Python #sklearn",
     "RT @David_Makinde_: I just completed Introduction to Python for Data Science \n#Datacamp\n#DataScience \n#Python",
@@ -10754,11 +10758,21 @@ my_document2 = Document(datacamp_tweets_array[0])
 print(my_document2.text)
 print(my_document2.tokens)
 print(my_document2.word_counts)
-
+print('#####')
 
 #####
-print('#####')
 
 datacamp_doc = Document(datacamp_tweets)
 print(datacamp_doc.tokens[:5])
 print(datacamp_doc.word_counts.most_common(5))
+print('#####')
+
+
+#####
+print('IYOOO')
+dc_tweets = SocialMedia(text = datacamp_tweets)
+print(dc_tweets.mention_counts.most_common(5))
+print(dc_tweets.hashtag_counts.most_common(5))
+print('#####')
+
+plot_counter(dc_tweets.hashtag_counts)
