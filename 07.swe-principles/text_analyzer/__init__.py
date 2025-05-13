@@ -1,7 +1,8 @@
 
 from .counter_utils import plot_counter, sum_counters
 from .document import Document
-from .tweet import SocialMedia
+from .social_media import SocialMedia
+from .tweets import Tweets
 
 # with __init__ file you can do these
 # # Example 1: Package metadata and version

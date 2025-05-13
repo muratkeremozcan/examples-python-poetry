@@ -10768,11 +10768,31 @@ print(datacamp_doc.word_counts.most_common(5))
 print('#####')
 
 
+from text_analyzer import Tweets
+
 #####
-print('IYOOO')
-dc_tweets = SocialMedia(text = datacamp_tweets)
+print('\n---- SocialMedia class demo ----')
+dc_tweets = SocialMedia(text=datacamp_tweets)
+print('Top mentions in all tweets:')
 print(dc_tweets.mention_counts.most_common(5))
+print('Top hashtags in all tweets:')
 print(dc_tweets.hashtag_counts.most_common(5))
+
+# Add some retweets to the dataset for demonstration
+datacamp_tweets_with_rt = 'RT @DataCamp: Learn #Python with our interactive tutorials! #DataScience\n' + datacamp_tweets
+
+print('\n---- Tweets class demo (extends SocialMedia) ----')
+dc_twitter = Tweets(text=datacamp_tweets_with_rt)
+print('Tweets object has all SocialMedia features:')
+print(f'Top mentions: {dc_twitter.mention_counts.most_common(3)}')
+print(f'Top hashtags: {dc_twitter.hashtag_counts.most_common(3)}')
+
+print('\nTweets class adds retweet functionality:')
+print(f'Retweets object type: {type(dc_twitter.retweets)}')
+print(f'Hashtags in retweets: {dc_twitter.retweets.hashtag_counts}')
+print(f'Mentions in retweets: {dc_twitter.retweets.mention_counts}')
 print('#####')
 
+# Plot the hashtag counts from the SocialMedia object
+print('\nPlotting hashtag distribution:')
 plot_counter(dc_tweets.hashtag_counts)
