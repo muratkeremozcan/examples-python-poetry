@@ -3,10 +3,12 @@
 import re
 from collections import Counter
 
+"""A class for text analysis
+
+:param text: string of text to be analyzed
+:ivar text: string of text to be analyzed set by `text` parameter
+"""
 class Document:
-	"""A class for text analysis	
-	:param text: string of text to be analyzed
-	"""
 	def __init__(self, text):
 		self.text = text
 		self.tokens = self._tokenize()

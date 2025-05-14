@@ -6,15 +6,16 @@ import inspect
 def count_letter(content, letter):
     """Count the number of times `letter` appears in `content`.
 
-    Args:
-      content (str): The string to search.
-      letter (str): The letter to search for (must be a single character).
-
-    Returns:
-      int: The number of times `letter` appears in `content`.
-
-    Raises:
-      ValueError: If `letter` is not a single character string.
+    :param content: The string to search
+    :type content: str
+    :param letter: The letter to search for (must be a single character)
+    :type letter: str
+    :return: The number of times `letter` appears in `content`
+    :rtype: int
+    :raises ValueError: If `letter` is not a single character string
+    
+    >>> count_letter("hello", "l")
+    2
     """
     if (not isinstance(letter, str)) or len(letter) != 1:
         raise ValueError("`letter` must be a single character string.")
@@ -34,14 +35,15 @@ print("{}\n{}\n{}".format(border, docstring2, border))
 
 # custom fn
 def build_tooltip(function):
-    """Create a tooltip for any function that shows the
-    function's docstring.
+    """Create a tooltip for any function that shows the function's docstring.
 
-    Args:
-      function (callable): The function we want a tooltip for.
-
-    Returns:
-      str
+    :param function: The function we want a tooltip for
+    :type function: callable
+    :return: Formatted string containing the function's docstring
+    :rtype: str
+    
+    >>> type(build_tooltip(count_letter))
+    <class 'str'>
     """
     # Get the docstring for the "function" argument by using inspect
     docstring = inspect.getdoc(function)
