@@ -2,7 +2,7 @@
 # Package Structure Control: init.py gives you more control what is exposed, and allows a nested structure
 # Backward Compatibility: Using init.py ensures compatibility with older Python versions (pre-3.3).
 
-from text_analyzer import Document, SocialMedia, plot_counter, sum_counters
+from text_analyzer import Document, Tweets, SocialMedia, plot_counter, sum_counters
 from collections import Counter
 
 word_counts = [
@@ -10747,30 +10747,20 @@ print(my_document0.tokens)
 print(my_document0.word_counts)
 print('#####')
 
-
 my_document1 = Document(text=datacamp_tweets_array[0])
 print(my_document1.text)
 print(my_document1.tokens)
 print(my_document1.word_counts)
 print('#####')
 
-my_document2 = Document(datacamp_tweets_array[0])
-print(my_document2.text)
-print(my_document2.tokens)
-print(my_document2.word_counts)
-print('#####')
-
-#####
+# #####
 
 datacamp_doc = Document(datacamp_tweets)
 print(datacamp_doc.tokens[:5])
 print(datacamp_doc.word_counts.most_common(5))
 print('#####')
 
-
-from text_analyzer import Tweets
-
-#####
+# #####
 print('\n---- SocialMedia class demo ----')
 dc_tweets = SocialMedia(text=datacamp_tweets)
 print('Top mentions in all tweets:')
