@@ -5,7 +5,7 @@
 # @pytest.mark.skipif('2 * 2 = 5') # skip with a condition
 # @pytest.mark.xfail # expect to fail
 import pytest 
-import datetime
+from datetime import datetime
 
 def multiple_of_two(num):
 	if num == 0:
