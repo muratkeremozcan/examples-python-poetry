@@ -33,10 +33,10 @@ isort .       # Organize imports
 flake8        # Lint code (like eslint)
 
 # Run tests
-pytest        # Run all tests
-pytest -v     # Verbose output
-pytest -k "test_name"  # Run specific test
-pytest --cov  # Run with coverage report
+poetry run pytest        # Run all tests
+poetry run pytest -v     # Verbose output
+poetry run pytest -k "test_name"  # Run specific test
+poetry run pytest --cov  # Run with coverage report
 ```
 
 ### Managing Packages
