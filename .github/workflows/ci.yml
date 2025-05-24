@@ -51,7 +51,7 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          poetry run pytest -v --cov=./ --cov-report=xml
+          poetry run pytest
 
 # Using python -m mypy instead of direct mypy command ensures the tool is run
 # through the Python interpreter installed in the current environment, avoiding path resolution issues.
