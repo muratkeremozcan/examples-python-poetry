@@ -31,6 +31,12 @@ python script.py
 black .       # Format code (like prettier)
 isort .       # Organize imports
 flake8        # Lint code (like eslint)
+
+# Run tests
+pytest        # Run all tests
+pytest -v     # Verbose output
+pytest -k "test_name"  # Run specific test
+pytest --cov  # Run with coverage report
 ```
 
 ### Managing Packages
