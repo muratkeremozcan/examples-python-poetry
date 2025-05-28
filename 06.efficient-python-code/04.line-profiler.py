@@ -1,5 +1,6 @@
 # %load_ext line_profiler
 # %lprun -f fn-name fn-name(args)
+# performance
 
 # using %timeit in multi-line code is inefficient, so we use code-profiling
 import numpy as np

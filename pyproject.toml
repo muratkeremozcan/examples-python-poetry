@@ -15,6 +15,7 @@ pytz = "^2025.1"
 six = "^1.17.0"
 tzdata = "^2025.1"
 matplotlib = "^3.8.2"
+pytest-benchmark = "^5.1.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.2"
