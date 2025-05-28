@@ -11,4 +11,4 @@ def test_zero():
 	assert factorial(0) == 1
 
 def test_str():
-    assert factorial('a') == -1
+    assert factorial('5') == -1

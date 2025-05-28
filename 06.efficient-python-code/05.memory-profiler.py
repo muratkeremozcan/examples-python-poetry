@@ -1,5 +1,6 @@
 # %load_ext memory_profiler
 # %mprun -f fn_name fn_name(args)
+# performance
 
 import numpy as np
 
