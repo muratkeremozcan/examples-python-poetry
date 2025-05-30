@@ -38,3 +38,9 @@ class TestPrime(unittest.TestCase):
         self.assertFalse(is_prime(-1))
         self.assertFalse(is_prime(6))
         self.assertFalse(is_prime(1))
+
+
+# running the tests in CLI
+# python -m unittest test_10_unittest.py
+# python -m unittest test_10_unittest.py -v # for verbose
+# python -m unittest test_10_unittest.py -v -k TestFactorial # for running specific test with fail fast
