@@ -12,18 +12,30 @@ def min_country(df):
     return df['VALUE'].idxmin()
 
 @pytest.fixture
-def setup_data():
+def set_up():
     df = get_data()
     df.drop('previousYearToDate', axis=1, inplace=True)
     df = df.groupby('COUNTRY').agg({'VALUE': 'sum'})
-    yield df
-    # Teardown
-    df.drop(df.index, inplace=True)
+    yield df # this is where the test runs, or you can return df / the last line
+    # Use yield if you need teardown code that runs after the test
+    # Use return for simpler cases without teardown
+    # in Pytest you never need teardown, it handles it (but these examples show it for some reason)
 
-def test_NAs(setup_data):
+    # Teardown: pytest handles this
+    # df.drop(df.index, inplace=True)
+
+def test_nas(set_up):
     # Check the number of nulls in the entire DataFrame
-    assert setup_data.isna().sum().sum() == 0
+    assert set_up.isna().sum().sum() == 0
 
-def test_argmax(setup_data):
+def test_argmax(set_up):
     # Check that min_country returns a string
-    assert isinstance(min_country(setup_data), str)
+    assert isinstance(min_country(set_up), str)
+
+
+# Pytest is designed to handle cleanup automatically, just like Jest. The only times you'd need to think about teardown are the rare edge cases like:
+
+# Working with files on disk
+# Managing database connections
+# Interacting with external services
+# Using module/session-scoped fixtures that modify external state
