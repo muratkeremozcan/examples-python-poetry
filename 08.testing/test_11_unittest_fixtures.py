@@ -1,14 +1,16 @@
+# unittest is very... clunky
+# In pytest fixtures automatically handle cleanup when they go out of scope
+# in unittest we have to think about how we want to clean up our data
+
 import unittest
 
 class TestWord(unittest.TestCase):
     # Fixture setup method
     def setUp(self):
-        # Initialize the word banana here
         self.word = "banana"
 
     # Test method
     def test_the_word(self):
-        # Add the tests here
 				# Create three tests to check that B and y are not in the list, and b is.
         self.assertNotIn("B", self.word)
         self.assertNotIn("y", self.word)
@@ -31,13 +33,11 @@ def create_data():
 
 class TestPalindrome(unittest.TestCase):
     def setUp(self):
-        # Initialize data here
         self.data = create_data()
     
     def test_func(self):
         expected_result = [True, False, True, True]
         data_checked = list(map(check_palindrome, self.data))
-        # Verify the checked data here
         self.assertEqual(data_checked, expected_result)
 
     def tearDown(self):
