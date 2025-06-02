@@ -27,13 +27,27 @@ def prepare_data():
     yield data
     
     # Teardown: Runs after each test
-    # The only time you'd need explicit cleanup is when:
-    # Working with external resources (files, databases, network connections)
-    # Managing global state
-    # Dealing with non-memory resources
+    # Use yield if you need teardown code that runs after the test
+    # Use return for simpler cases without teardown
+    # in Pytest you never need teardown, it handles it (but these examples show it for some reason)
     # data.clear()
 
 def test_elements(prepare_data):
     # prepare_data is automatically provided by the autouse fixture
     assert 9 in prepare_data
     assert 10 not in prepare_data
+
+# Pytest is designed to handle cleanup automatically, just like Jest. The only times you'd need to think about teardown are the rare edge cases like:
+
+# Working with files on disk
+# Managing database connections
+# Interacting with external services
+# Using module/session-scoped fixtures that modify external state
+
+#############
+
+# there may be cases where you might not be using the RETURN/YIELD value from a fixture
+# When it is so, there may be cases where you want to keep running the HOOK/FIXTURE before every test
+
+# This is the purpose of autouse
+# in the above example it is pointless, because the return value is being used anyway
