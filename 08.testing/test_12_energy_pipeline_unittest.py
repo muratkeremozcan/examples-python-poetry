@@ -5,6 +5,8 @@ DF_PATH = 'https://assets.datacamp.com/production/repositories/6253/datasets/f01
 def get_data():
     return pd.read_csv(DF_PATH)
 
+# finds the minimum value in that column
+# returns the index label of the first row where that minimum value appears
 def min_country(df):
     return df['VALUE'].idxmin()
 
