@@ -24,7 +24,6 @@ def get_grouped(df):
 ##############
 # Unit test 
 # it checks that your fixture returns a non‐empty DataFrame
-
 def test_read_df(read_df):
 	# check the type of the dataframe
 	assert isinstance(read_df, pd.DataFrame)
@@ -38,7 +37,6 @@ def test_read_df(read_df):
 
 # Integration test 
 # checks that multiple layers (CSV → DataFrame → grouping) interoperate correctly.
-
 def test_get_grouped(read_df):
 	salary_by_year = get_grouped(read_df)
 	# check the nulls
@@ -50,7 +48,6 @@ def test_get_grouped(read_df):
 
 # Feature test 
 # checks a specific deliverable or “feature” (the median salary for 2022) behaves as your users or requirements dictate.
-
 def test_feature_2022(read_df):
 	salary_by_year = get_grouped(read_df)
 	salary_2022 = salary_by_year.loc[2022, '50%']
