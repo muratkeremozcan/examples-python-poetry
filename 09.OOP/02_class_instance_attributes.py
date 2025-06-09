@@ -10,7 +10,7 @@ class Player:
 			self.position = Player.MAX_POSITION
 
 # class Player {
-#   static readonly MAX_POSITION: number = 10;
+#   static readonly MAX_POSITION: number = 10; # static attribute
 #   constructor(public position: number) {
 #     if (position > Player.MAX_POSITION) {
 #       this.position = Player.MAX_POSITION;
