@@ -45,7 +45,11 @@ class BankAccount:
 
 	# Provides a complete, unambiguous string representation of an object
 	def __repr__(self):
-			return f"BankAccount(number={self.number}, balance={self.balance})"
+			return f'BankAccount(number={self.number}, balance={self.balance})'
+
+	# Provides a human-readable string representation of an object (informal, for end-users)
+	def __str__(self):
+			return f'BankAccount(number={self.number}, balance={self.balance})'
 
 
 acct1 = BankAccount(123, 1000)
