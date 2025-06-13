@@ -1,3 +1,8 @@
+# try/except/finally: Handle specific exceptions, with finally for cleanup
+# Custom errors: Inherit from built-in exceptions for domain-specific validation
+# Python: Use class hierarchies (BonusError < SalaryError < ValueError)
+# TypeScript: Simpler errors or error codes are more common than deep hierarchies
+
 def invert_at_index(x, ind):
 	try:
 		return 1 / x[ind]

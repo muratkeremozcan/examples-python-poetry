@@ -17,7 +17,6 @@ class Manager(Employee):
 		super().__init__(name, salary)
 		# Employee.__init__(self, name, salary) # using super is much better, saves the self arg
 		self.project = project
-		self.team = []
 
 	def give_raise(self, amount, bonus = 1.05):
 		super().give_raise(amount * bonus)
@@ -47,7 +46,6 @@ print(mgr.salary)
 # }
 
 # class Manager extends Employee {
-#     team: string[] = [];
 
 #     constructor(
 #         name: string,
