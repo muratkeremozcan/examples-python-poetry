@@ -1,3 +1,7 @@
+# Custom comparison methods (__eq__, __lt__, etc.) enable object comparison in Python
+# Always check types and return NotImplemented for unsupported comparisons
+# __str__ for user-friendly output, __repr__ for debugging/REPL
+
 class BankAccount:
 	def __init__(self, number, balance=0):
 		self.balance = balance

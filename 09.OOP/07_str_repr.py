@@ -1,5 +1,4 @@
-# __str__() for humans, used by str() and print()
-# __repr__() for developers, used by repr(), ideally should look like a valid Python expression to recreate the object
+# __str__ for user-friendly output, __repr__ for debugging/REPL
 
 class Employee:
     def __init__(self, name, salary=30000):

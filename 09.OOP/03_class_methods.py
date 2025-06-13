@@ -67,3 +67,27 @@ print(xmas.year, xmas.month, xmas.day)
 # // Usage
 # const xmas = BetterDate.fromStr("2025-12-25");
 # console.log(xmas.year, xmas.month, xmas.day);
+
+
+## realistic example 
+
+class DatabaseConnection:
+    _instance = None
+    
+    def __init__(self):
+        if DatabaseConnection._instance is not None:
+            raise Exception("This class is a singleton - use get_instance()")
+        # Initialize connection
+        self.connection = "Connected"
+        
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()  # Creates the one and only instance
+        return cls._instance
+
+# Usage
+db1 = DatabaseConnection.get_instance()  # Creates new instance
+db2 = DatabaseConnection.get_instance()  # Returns same instance as db1
+# This would raise an exception because we're trying to create a second instance
+# db3 = DatabaseConnection()  # Raises Exception
