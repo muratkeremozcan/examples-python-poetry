@@ -23,9 +23,11 @@
 # }
 
 # Core concepts
-# Encapsulation: Bundling of data and methods
+# Encapsulation: state + behavior / (attributes + methods) bundled together 
 # Inheritance: Extending the functionality of existing code
 # Polymorphism: Creating a unified interface
+
+# __init__ (constructor): add data to the object when creating it
 
 class Employee:
   def __init__(self, name, salary):
