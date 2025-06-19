@@ -12,15 +12,17 @@ class Employee:
         self.salary += amount      
         
 
+# Polymorphism: Creating a unified interface that morphs child method behavior
+# Can even change method signature - keep arg order similar, add new args last
 class Manager(Employee):
 	def __init__(self, name, salary=Employee.MIN_SALARY, project=None):
-		super().__init__(name, salary)
 		# Employee.__init__(self, name, salary) # using super is much better, saves the self arg
+		super().__init__(name, salary)
 		self.project = project
 
 	def give_raise(self, amount, bonus = 1.05):
-		super().give_raise(amount * bonus)
 		# Employee.give_raise(self, amount * 1.1) # using super is much better, saves the self arg
+		super().give_raise(amount * bonus)
 
 
 mgr = Manager("Alex", 90000, "Engineering")

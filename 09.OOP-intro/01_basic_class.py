@@ -1,4 +1,3 @@
-
 # class Employee {
 #   constructor(private name: string, private salary: number) {
 #     if (salary > 0) {
@@ -25,8 +24,7 @@
 # Core concepts
 # Encapsulation: state + behavior / (attributes + methods) bundled together 
 # Inheritance: Extending the functionality of existing code
-# Polymorphism: Creating a unified interface
-
+# Polymorphism: Creating a unified interface that morphs child method behavior
 # __init__ (constructor): add data to the object when creating it
 
 class Employee:
