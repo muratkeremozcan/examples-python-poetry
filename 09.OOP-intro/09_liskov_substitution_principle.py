@@ -110,3 +110,92 @@ class SquareComposition:
 #         return self._size
 #     def with_size(self, new_size): 
 #         return Square(new_size)
+
+
+
+
+
+####### Inheritance vs Composition ########
+
+class Animal:
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+dog = Dog()
+print(dog.speak())  # "Woof!"
+
+###
+# Problem: What if you need a RobotDog that doesn't eat or sleep like a real dog?
+# Composition (Has-A Relationship)
+
+class Speaker:
+  def speak(self):
+    return "Some sound"
+
+class Dog:
+  def __init__(self):
+    self.speaker = Speaker()
+
+  def speak(self):
+    return "Woof!"
+
+class RobotDog:
+  def __init__(self):
+    self.speaker = Speaker()
+
+  def speak(self):
+    return "Beep!"
+
+
+## TS version
+# class Animal {
+#   speak(): string {
+#     return "Some sound";
+#   }
+# }
+
+# class Dog extends Animal {
+#   speak(): string {
+#     return "Woof!";
+#   }
+# }
+
+# const dog = new Dog();
+# console.log(dog.speak());  // "Woof!"
+
+# composition:
+# class Speaker {
+#   speak(): string {
+#     return "Some sound";
+#   }
+# }
+
+# class Dog {
+#   constructor(private speaker: Speaker) {
+#     this.speaker = new Speaker();
+#   }
+
+#   speak(): string {
+#     return "Woof!";
+#   }
+# }
+
+# class RobotDog {
+#   constructor(private speaker: Speaker) {
+#     this.speaker = new Speaker();
+#   }
+
+#   speak(): string {
+#     return "Beep boop";
+#   }
+# }
+
+# const dog = new Dog();
+# console.log(dog.speak());  // "Woof!"
+
+# const robot = new RobotDog();
+# console.log(robot.speak());  // "Beep boop"
