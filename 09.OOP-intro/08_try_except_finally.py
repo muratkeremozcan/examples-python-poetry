@@ -60,7 +60,7 @@ class Employee:
       raise SalaryError('The salary after bonus is too low!')
     self.salary += amount		
 	
-#   TypeScript/JavaScript, custom error classes aren't as commonly used as in Python. 
+# TypeScript/JavaScript, custom error classes aren't as commonly used as in Python. 
 # Python: More formal error hierarchies
 # TypeScript/JavaScript: Often use error codes or simple error messages
 
