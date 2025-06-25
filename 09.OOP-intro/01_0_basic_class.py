@@ -22,7 +22,7 @@
 # }
 
 # Core concepts
-# Encapsulation: state + behavior / (attributes + methods) bundled together 
+# Encapsulation: state + behavior bundled together (attributes + methods)
 # Inheritance: Extending the functionality of existing code
 # Polymorphism: Creating a unified interface that morphs child method behavior
 # __init__ (constructor): add data to the object when creating it
