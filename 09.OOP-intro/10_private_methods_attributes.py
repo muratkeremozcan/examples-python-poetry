@@ -7,7 +7,7 @@ class BetterDate:
 	def __init__(self, year, month, day):
 		self.year, self.month, self.day = year, month, day
 
-	@classmethod
+	@classmethod # like static method in other languages
 	def from_str(cls, datestr):
 		year, month, day = map(int, datestr.split('-'))
 		return cls(year, month, day)
