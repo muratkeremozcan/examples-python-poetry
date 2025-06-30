@@ -3,6 +3,7 @@
 # Date objects support arithmetic (e.g., `end - start` gives timedelta)
 # Sort dates naturally with `sorted()` for chronological order
 # Negative indices access list from the end (`-1` is last item)
+# We can represent the date as a string in different formats using strftime(%m, %B, %d, %j, %Y) (%B for month name) and isoformat()
 
 from datetime import date
 
@@ -20,7 +21,7 @@ for hurricane in florida_hurricane_dates:
 	if hurricane.month < 6:
 		early_hurricanes += 1
 
-print("Number of hurricanes before June:", early_hurricanes)
+print('Number of hurricanes before June:', early_hurricanes)
 
 ######
 
@@ -50,3 +51,27 @@ print(dates_scrambled[0 - 1])
 dates_ordered = sorted(dates_scrambled)
 print(dates_ordered[0])
 print(dates_ordered[-1])
+
+###########
+# date to string
+# Assign the earliest date in florida_hurricane_dates to first_date
+
+first_date = sorted(florida_hurricane_dates)[0]
+
+iso = 'Our earliest hurricane date: ' + first_date.isoformat()
+us = 'Our earliest hurricane date: ' + first_date.strftime("%m/%d/%Y")
+
+print(iso)
+print(us)
+
+###
+
+andrew = date(1992, 8, 26)
+# Print the date in the format 'YYYY-MM'
+print(andrew.strftime('%Y-%m'))
+# Print the date in the format 'MONTH (YYYY)'
+print(andrew.strftime('%m (%Y)'))
+print(andrew.strftime('%B (%Y)'))
+# Print the date in the format 'YYYY-DDD'
+print(andrew.strftime('%y-%j'))
+print(andrew.strftime('%Y-%j'))
