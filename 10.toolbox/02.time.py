@@ -31,3 +31,25 @@ for trip in onebike_datetimes:
 
 print(trip_counts)
 
+
+###########
+from datetime import timedelta
+
+onebike_durations = []
+
+for trip in onebike_datetimes:
+	trip_duration = trip['end'] - trip['start']
+	trip_length_seconds = trip_duration.total_seconds()
+	onebike_durations.append(trip_length_seconds)
+
+total_elapsed_time = sum(onebike_durations)
+number_of_trips = len(onebike_durations)
+print(total_elapsed_time / number_of_trips)
+
+shortest_trip = min(onebike_durations)
+longest_trip = max(onebike_durations)
+
+print("The shortest trip was " + str(shortest_trip) + " seconds")
+print("The longest trip was " + str(longest_trip) + " seconds")
+
+
