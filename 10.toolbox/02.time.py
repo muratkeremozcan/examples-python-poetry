@@ -2,6 +2,10 @@
 # there is a expanded format, and we can .replace() to change a property
 # we can access the properties with .year, .month, .day, .hour, .minute, .second
 
+# Time differences between datetime objects return timedelta objects
+# Use .total_seconds() to get duration in seconds as a float
+# datetime objects are comparable and support min()/max() operations
+# datetime arithmetic (subtraction) returns a timedelta object
 
 from datetime import datetime
 
@@ -33,19 +37,19 @@ print(trip_counts)
 
 
 ###########
-from datetime import timedelta
 
 onebike_durations = []
 
 for trip in onebike_datetimes:
-	trip_duration = trip['end'] - trip['start']
-	trip_length_seconds = trip_duration.total_seconds()
+	trip_duration = trip['end'] - trip['start'] # datetime arithmetic (subtraction) returns a timedelta object
+	trip_length_seconds = trip_duration.total_seconds() # Use .total_seconds() to get duration in seconds as a float
 	onebike_durations.append(trip_length_seconds)
 
 total_elapsed_time = sum(onebike_durations)
 number_of_trips = len(onebike_durations)
 print(total_elapsed_time / number_of_trips)
 
+# datetime objects are comparable and support min()/max() operations
 shortest_trip = min(onebike_durations)
 longest_trip = max(onebike_durations)
 
