@@ -1,6 +1,7 @@
 # 1. Create timezone-aware datetimes using timezone(timedelta(hours=X))
 # 2. Convert between timezones with astimezone() (preferred)
 # 3. Use replace(tzinfo=) carefully - doesn't convert time
+# 4. Use dateutil to get timezone objects (preferred)
 
 from datetime import datetime, timedelta, timezone
 
@@ -42,3 +43,32 @@ for trip in onebike_datetimes[:3]:
 	
 # Print the start time in UTC
 print('Original:', trip['start'], '| UTC:', dt.isoformat())
+print('\n')
+
+######
+
+from dateutil import tz
+
+et = tz.gettz('US/Eastern')
+ct = tz.gettz('US/Central')
+tr = tz.gettz('Turkey')
+
+# The actual timezone data is used when you apply these timezone objects to datetime objects using methods like astimezone() or replace(tzinfo=...)
+# print(et)
+# print(ct)
+# print(tr)
+
+for trip in onebike_datetimes[:3]:
+	trip['start'] = trip['start'].replace(tzinfo=et)
+	trip['end'] = trip['end'].replace(tzinfo=et)
+
+print(onebike_datetimes[:3])
+
+#######
+uk = tz.gettz('Europe/London')
+
+local = onebike_datetimes[0]['start']
+notlocal = local.astimezone(uk)
+
+print(local.isoformat())
+print(notlocal.isoformat())
