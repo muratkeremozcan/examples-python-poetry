@@ -3,7 +3,7 @@
 # Date objects support arithmetic (e.g., `end - start` gives timedelta)
 # Sort dates naturally with `sorted()` for chronological order
 # Negative indices access list from the end (`-1` is last item)
-# We can represent the date as a string in different formats using strftime(%m, %B, %d, %j, %Y) (%B for month name) and isoformat()
+# We can represent the date as a string in different formats using strftime(%m, %B, %d, %j, %y, %Y) (%B for month name, %j for day of the year, %y last 2 digits of year) and isoformat()
 
 from datetime import date
 
