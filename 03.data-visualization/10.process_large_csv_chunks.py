@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Get the absolute path of the CSV file to avoid path issues
+# how to read file from anywhere
 script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, "ind_pop_data.csv")
 
