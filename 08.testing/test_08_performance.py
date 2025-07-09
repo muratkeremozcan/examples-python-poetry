@@ -51,6 +51,8 @@ def test_set2(benchmark):
 # •	StdDev: the root-mean-square deviation from the mean; measures how much run-times bounce around.
 # •	IQR: the span from the 25th to 75th percentile; captures the width of your middle 50% of runs, robust to extremes.
 
+#  When there are outliers in our data set that might skew the answer, use median instead of mean, because median is less sensitive to outliers.
+
 # 	•	Mean: set ∼52 ns vs list ∼195 ns → set is ~4× faster
 # 	•	Median: set’s 53.7 ns vs list’s 202.1 ns → typical run confirms the mean
 # 	•	StdDev: set’s 5 ns vs list’s 20 ns → list times jump around four times more
