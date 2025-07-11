@@ -1,6 +1,3 @@
-# Key Pandas Datetime and Time Series Operations
-#
-# 1. Reading and Parsing Dates:
 #    - Read CSV with datetime parsing: pd.read_csv(parse_dates=['column_name'])
 #    - Access datetime properties/methods with .dt accessor (ex: ride_durations.dt.total_seconds())
 #
@@ -29,6 +26,22 @@
 # 7. Visualization:
 #    - Set y-axis limits: .plot(ylim=[min, max])
 #    - Display plots: plt.show()
+# 
+# 8. Timezone Handling:
+#    - Localize: df['ts'] = df['ts'].dt.tz_localize('America/New_York', ambiguous='NaT')
+#    - Convert:  df['ts'] = df['ts'].dt.tz_convert('Europe/London')
+#
+# 9. Feature Extraction – Weekday:
+#    - df['weekday'] = df['ts'].dt.day_name()
+#    - df.groupby('weekday')['Duration'].median()
+#
+# 10. Lagged & Inter-Event Metrics:
+#    - prev = df['End date'].shift(1)
+#    - df['Time since'] = (df['Start date'] - prev).dt.total_seconds()
+#    - Resample that metric: df.resample('M', on='Start date')['Time since'].mean()/3600
+#
+# 11. Combine All:
+#    - Chain parsing, masking, resampling, grouping, tz, and lag for concise, powerful time-series analysis
 
 
 import pandas as pd
@@ -93,7 +106,7 @@ rides.resample('D', on = 'Start date')\
   .size()\
   .plot(ylim = [0, 15]) # line plot with y limit
 
-plt.show()
+# plt.show() # optional
 
 
 # resample and just select 'Member type' column from the resampled DataFrame
@@ -108,3 +121,27 @@ grouped = rides.groupby('Member type')\
 
 # Print the median duration for each group
 print(grouped['Duration'].median())
+
+####
+# Localize the Start date column to America/New_York
+rides['Start date'] = rides['Start date'].dt.tz_localize('America/New_York', ambiguous='NaT')
+
+print(rides['Start date'].iloc[0])
+
+# Convert the Start date column to Europe/London
+rides['Start date'] = rides['Start date'].dt.tz_convert('Europe/London')
+print(rides['Start date'].iloc[0])
+
+# Add a column for the weekday of the start of the ride
+rides['Ride start weekday'] = rides['Start date'].dt.day_name()
+# Print the median trip time per weekday
+print(rides.groupby('Ride start weekday')['Duration'].median())
+
+# Shift the index of the end date up one; now subtract it from the start date
+rides['Time since'] = rides['Start date'] - rides['End date'].shift(1)
+# Move from a timedelta to a number of seconds, which is easier to work with
+rides['Time since'] = rides['Time since'].dt.total_seconds()
+# Resample to the month
+monthly_rides = rides.resample('M', on = 'Start date')
+# Print the average hours between rides each month
+print(monthly_rides['Time since'].mean() / 3600)
