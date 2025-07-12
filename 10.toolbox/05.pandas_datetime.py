@@ -1,3 +1,4 @@
+# 1. Reading and Parsing Dates:
 #    - Read CSV with datetime parsing: pd.read_csv(parse_dates=['column_name'])
 #    - Access datetime properties/methods with .dt accessor (ex: ride_durations.dt.total_seconds())
 #
@@ -40,8 +41,6 @@
 #    - df['Time since'] = (df['Start date'] - prev).dt.total_seconds()
 #    - Resample that metric: df.resample('M', on='Start date')['Time since'].mean()/3600
 #
-# 11. Combine All:
-#    - Chain parsing, masking, resampling, grouping, tz, and lag for concise, powerful time-series analysis
 
 
 import pandas as pd

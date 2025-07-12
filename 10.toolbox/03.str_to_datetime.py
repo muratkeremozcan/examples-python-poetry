@@ -43,10 +43,10 @@ from datetime import datetime
 dt = datetime.now()
 
 ##############
-# strftime(date, format)
+# .strftime(date, format)
 print(datetime.strftime(dt, '%Y-%m-%d %H:%M:%S'))
 
-# strptime(string, format)
+# .strptime(string, format)
 s = '2017-02-03 00:00:01'
 fmt = '%Y-%m-%d %H:%M:%S'
 
@@ -90,5 +90,6 @@ print(first_start.isoformat())
 #####
 timestamps = [1514665153, 1514664543]
 
+# convert Unix timestamp (seconds) to datetime
 dts = [datetime.fromtimestamp(ts) for ts in timestamps]
 
