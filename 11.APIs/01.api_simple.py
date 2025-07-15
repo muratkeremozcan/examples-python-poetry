@@ -40,4 +40,6 @@ resp = requests.post(BASE, data=new_user, headers=HEADERS)
 print('Request headers →', resp.request.headers) # application/x-www-form-urlencoded
 print('Request body    →', resp.request.body) # name=murat&job=tester
 print('Response status →', resp.status_code) # 201
+print('Response content type →', resp.headers['Content-Type']) # application/json
+print('Response accept →', resp.headers['accept']) # application/json
 print('Response body   →', resp.text) # {"name":"murat","job":"tester","id":"608","createdAt":"2025-07-14T13:47:56.914Z"}
