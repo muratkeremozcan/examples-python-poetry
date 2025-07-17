@@ -1,4 +1,3 @@
-
 # ===== PREFERRED PATTERNS =====
 # 1. Use dateutil.tz.gettz('Region/City') for timezone objects (handles DST)
 # 2. Use astimezone() to convert between timezones (handles DST automatically)
