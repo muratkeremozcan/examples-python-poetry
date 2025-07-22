@@ -47,6 +47,11 @@ class BankAccount:
 					return NotImplemented
 			return self.balance >= other.balance
 
+	def __add__(self, other):
+			if not self._is_bank_account(other):
+					return NotImplemented
+			return BankAccount(self.number, self.balance + other.balance)
+
 	# Provides a complete, unambiguous string representation of an object
 	def __repr__(self):
 			return f'BankAccount(number={self.number}, balance={self.balance})'
@@ -61,7 +66,7 @@ acct2 = BankAccount(123, 1000)
 acct3 = BankAccount(456, 1000)
 print(acct1 == acct2)
 print(acct1 == acct3)
-
+print(acct1 + acct2)
 
 
 class Phone:
