@@ -34,7 +34,6 @@ print(cust.balance)
 # cust.balance = -1000 # ValueError: Invalid balance
 
 
-
 # @dataclass version
 # When to Use @dataclass:
 
@@ -104,3 +103,55 @@ class LoggedDF(pd.DataFrame):
   @property
   def created_at(self):
     return self._created_at
+
+
+
+####### another example
+
+class BankAccount:
+  def __init__(self, balance):
+    self._balance = balance
+
+  @property
+  def balance(self):
+    return f"${round(self._balance, 2)}"
+
+  @balance.setter
+  def balance(self, new_balance):
+    if new_balance > 0:
+      self._balance = new_balance
+
+  @balance.deleter
+  def balance(self):
+    print("Deleting the 'balance' attribute")
+    del self._balance	
+
+
+checking_account = BankAccount(100)
+print(checking_account.balance)
+
+checking_account.balance = 150
+print(checking_account.balance)
+
+del checking_account.balance
+
+########
+
+#dataclass version
+# Dataclasses auto-generate __init__, __repr__, and comparison methods,
+# removing boilerplate for simple data containers.
+# For controlled access or complex logic (getters/setters), stick with manual @property definitions.
+
+
+from dataclasses import dataclass
+
+@dataclass
+class BankAccount:
+  balance: float
+
+checking_account = BankAccount(100)
+print(checking_account.balance)
+
+checking_account.balance = 150
+print(checking_account.balance)
+	
