@@ -6,6 +6,39 @@ class BankAccount:
 	def __init__(self, number, balance=0):
 		self.balance = balance
 		self.number = number
+		self._dynamic_attributes = {}  # Dictionary to store dynamic attributes
+	
+	def __getattr__(self, name):
+		"""
+		Called when an attribute lookup fails.
+		This allows for dynamic attribute access and lazy loading.
+		"""
+		if name in self._dynamic_attributes:
+			return self._dynamic_attributes[name]
+			
+		# For attributes that start with 'get_', you could implement dynamic getters
+		if name.startswith('get_') and name[4:] in self._dynamic_attributes:
+			return lambda: self._dynamic_attributes[name[4:]]
+			
+		# Raise AttributeError for undefined attributes
+		raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
+	
+	def __setattr__(self, name, value):
+		"""
+		Intercept all attribute assignments.
+		This allows for validation, computed properties, or read-only attributes.
+		"""
+		# Allow setting of _dynamic_attributes in __init__
+		if name == '_dynamic_attributes':
+			super().__setattr__(name, value)
+			return
+			
+		# Allow direct assignment to existing attributes
+		if name in self.__dict__ or hasattr(self.__class__, name):
+			super().__setattr__(name, value)
+		else:
+			# For new attributes, store them in _dynamic_attributes
+			self._dynamic_attributes[name] = value
 
 	def withdraw(self, amount):
 		self.balance -= amount
@@ -79,6 +112,56 @@ class Phone:
 pn = Phone(873555333)
 acct4 = BankAccount(873555333)
 print(pn == acct4)
+
+# Example usage of __getattr__ and __setattr__
+print("\n--- Dynamic Attributes Example ---")
+account = BankAccount(999, 5000)
+
+# 1. Normal attribute access (goes through __dict__)
+print(f"Initial balance: {account.balance}")
+
+# 2. Dynamic attribute assignment (goes through __setattr__)
+account.owner = "John Doe"  # This will be stored in _dynamic_attributes
+account.email = "john@example.com"
+
+# 3. Dynamic attribute access (goes through __getattr__)
+print(f"Owner: {account.owner}")
+print(f"Email: {account.email}")
+
+# 4. Try to access non-existent attribute
+try:
+    print(account.non_existent)
+except AttributeError as e:
+    print(f"Error: {e}")
+
+# 5. View the internal storage
+print(f"\nInternal state:")
+print(f"__dict__: {account.__dict__}")
+print(f"_dynamic_attributes: {account._dynamic_attributes}")
+
+# 6. Type safety note (this is where TypeScript would help!)
+# In TypeScript, these dynamic attributes would be caught at compile time
+# In Python, they're only caught at runtime
+account.balance = "not a number"  # This is allowed in Python but would be a type error in TypeScript
+print(f"\nAfter bad assignment - balance: {account.balance} (type: {type(account.balance)})")
+
+# 7. Making attributes read-only
+del BankAccount.__setattr__  # Remove our custom __setattr__
+
+class ReadOnlyAccount(BankAccount):
+    def __setattr__(self, name, value):
+        if name in self.__dict__:
+            raise AttributeError(f"Can't modify attribute '{name}' after creation")
+        super().__setattr__(name, value)
+
+print("\n--- Read-Only Example ---")
+read_only = ReadOnlyAccount(100, 1000)
+read_only.balance = 2000  # This will raise an error
+
+# This demonstrates why you might want these methods in Python, even though
+# they're not common in TypeScript. Python's dynamic nature allows for powerful
+# metaprogramming features that can be very useful in certain scenarios, but
+# should be used judiciously to maintain code clarity and type safety.
 
 # class BankAccount {
 #   constructor(
