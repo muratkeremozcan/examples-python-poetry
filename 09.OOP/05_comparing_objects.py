@@ -33,7 +33,7 @@ class BankAccount:
 			super().__setattr__(name, value)
 			return
 			
-		# Allow direct assignment to existing attributes
+		# Allow direct assignment to existing attributes. __dict__ is an instance variable storage
 		if name in self.__dict__ or hasattr(self.__class__, name):
 			super().__setattr__(name, value)
 		else:
