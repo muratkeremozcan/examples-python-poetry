@@ -1,5 +1,6 @@
-# Abstract Base Class is similar to Interface in TS, but it can also have concrete methods; that's the key difference
-
+# Abstract Base Class is similar to Interface (in TS), but it can also have concrete methods; that's the key difference
+# an informal interface, uses regular methods and has no implementation, has no concrete methods
+# a formal interface uses abstract base class, has no implementation, has no concrete methods
 
 from abc import ABC, abstractmethod
 from typing import Dict
@@ -49,3 +50,52 @@ m = Manufacturing("Morgan's Manufacturing", 5000)
 
 m.pay_taxes(0.1)
 m.report_revenue()
+
+
+#######
+# This one is an informal interface, because it has no implementation
+class Supplier:
+  def take_order(self, product_name, quantity):
+    pass
+
+  def make_delivery(self, order_id, location):
+    pass
+
+class YogurtSupplier:
+  def __init__(self):
+    self.orders = {}
+  
+  # Finish defining the take_order() method
+  def take_order(self, product_name, quantity):
+    self.orders[f"{product_name}_{quantity}"] = {
+      "product_name": product_name, "quantity": quantity
+    }
+  
+  # Implement a make_delivery() method
+  def make_delivery(self, order_id, location):
+    print(f"Delivering order: {order_id} to {location}")
+    del self.orders[order_id]
+
+
+# A formal interface uses abstract base class
+class Supplier2(ABC):
+	@abstractmethod
+	def take_order(self, product_name, quantity):
+		pass
+
+	@abstractmethod
+	def make_delivery(self, order_id, location):
+		pass
+
+class YogurtSupplier2(Supplier2):
+	def __init__(self):
+		self.orders = {}
+
+	def take_order(self, product_name, quantity):
+		self.orders[f"{product_name}_{quantity}"] = {
+			"product_name": product_name, "quantity": quantity
+		}
+
+	def make_delivery(self, order_id, location):
+		print(f"Delivering order: {order_id} to {location}")
+		del self.orders[order_id]	
