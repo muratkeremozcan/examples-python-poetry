@@ -31,6 +31,11 @@ class Checkout:
     customer.make_payment(price)	
 
 
+# usage
+checkout = Checkout()
+checkout.complete_transaction("Rewards Member", 100)
+checkout.complete_transaction("New Customer", 100)
+
 ############
 
 class LLM(ABC):
@@ -56,3 +61,8 @@ class ChatBot:
 	def chat(self, prompt, provider):
 		llm = self._get_llm(provider)
 		return llm.complete_sentence(prompt)
+
+# usage
+chatbot = ChatBot()
+print(chatbot.chat("Hello", "OpenAI"))
+print(chatbot.chat("Hello", "Anthropic"))
