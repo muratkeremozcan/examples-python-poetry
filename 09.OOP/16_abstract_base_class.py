@@ -1,6 +1,6 @@
 # Abstract Base Class is similar to Interface (in TS), but it can also have concrete methods; that's the key difference
-# an informal interface, uses regular methods and has no implementation, has no concrete methods
-# a formal interface uses abstract base class, has no implementation, has no concrete methods
+# informal interface: regular methods, no implementation, no concrete methods
+# formal interface: abstract base class, no implementation, no concrete methods ( preferred)
 
 from abc import ABC, abstractmethod
 from typing import Dict
