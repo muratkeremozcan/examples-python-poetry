@@ -1,21 +1,17 @@
-"""A module to implement the BasicCalculator.
-"""
 import numpy as np
 
 class BasicCalculator:
-    """A class for arithmetic operations on numbers    
-    """
-    def add(self, x, y):
+    def add(self, x: float, y: float) -> float:
         return np.add(x, y)
 
-    def subtract(self, x, y):
+    def subtract(self, x: float, y: float) -> float:
         return np.subtract(x, y)
 
-    def multiply(self, x, y):
+    def multiply(self, x: float, y: float) -> float:
         return np.multiply(x, y)
 
-    def divide(self, x, y):
+    def divide(self, x: float, y: float) -> float:
         return np.divide(x, y)
 
-    def power(self, x, y):
+    def power(self, x: float, y: float) -> float:
         return np.power(x, y)
