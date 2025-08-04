@@ -1,3 +1,5 @@
+from financial_calculator import FinancialCalculator
+
 class MortgageCalculator(FinancialCalculator):
 	"""
     A class for calculating mortgage-related values.    
