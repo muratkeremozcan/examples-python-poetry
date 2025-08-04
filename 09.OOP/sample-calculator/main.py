@@ -1,4 +1,4 @@
-from calculator.financial_calculator import FinancialCalculator
+from calculators.financial_calculator import FinancialCalculator
 
 
 financial_calculator = FinancialCalculator()
