@@ -15,3 +15,4 @@ class BasicCalculator:
 
     def power(self, x: float, y: float) -> float:
         return np.power(x, y)
+        
