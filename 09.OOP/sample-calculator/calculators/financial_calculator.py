@@ -1,4 +1,4 @@
-from basic_calculator import BasicCalculator
+from .basic_calculator import BasicCalculator
 
 class FinancialCalculator(BasicCalculator):
 	def monthly_interest(self, annual_interest_rate: float) -> float:
