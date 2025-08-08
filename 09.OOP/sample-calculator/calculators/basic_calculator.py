@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class BasicCalculator:
     def add(self, x: float, y: float) -> float:
         return np.add(x, y)
@@ -15,4 +16,3 @@ class BasicCalculator:
 
     def power(self, x: float, y: float) -> float:
         return np.power(x, y)
-        

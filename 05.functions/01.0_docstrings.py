@@ -13,7 +13,7 @@ def count_letter(content, letter):
     :return: The number of times `letter` appears in `content`
     :rtype: int
     :raises ValueError: If `letter` is not a single character string
-    
+
     >>> count_letter("hello", "l")
     2
     """
@@ -41,7 +41,7 @@ def build_tooltip(function):
     :type function: callable
     :return: Formatted string containing the function's docstring
     :rtype: str
-    
+
     >>> type(build_tooltip(count_letter))
     <class 'str'>
     """

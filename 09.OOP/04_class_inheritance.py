@@ -1,5 +1,5 @@
 class Employee:
-    MIN_SALARY = 30000    
+    MIN_SALARY = 30000
 
     def __init__(self, name, salary=MIN_SALARY):
         self.name = name
@@ -7,22 +7,22 @@ class Employee:
             self.salary = salary
         else:
             self.salary = Employee.MIN_SALARY
-        
+
     def give_raise(self, amount):
-        self.salary += amount      
-        
+        self.salary += amount
+
 
 # Polymorphism: Creating a unified interface that morphs child method behavior
 # Can even change method signature - keep arg order similar, add new args last
 class Manager(Employee):
-	def __init__(self, name, salary=Employee.MIN_SALARY, project=None):
-		# Employee.__init__(self, name, salary) # using super is much better, saves the self arg
-		super().__init__(name, salary)
-		self.project = project
+    def __init__(self, name, salary=Employee.MIN_SALARY, project=None):
+        # Employee.__init__(self, name, salary) # using super is much better, saves the self arg
+        super().__init__(name, salary)
+        self.project = project
 
-	def give_raise(self, amount, bonus = 1.05):
-		# Employee.give_raise(self, amount * 1.1) # using super is much better, saves the self arg
-		super().give_raise(amount * bonus)
+    def give_raise(self, amount, bonus=1.05):
+        # Employee.give_raise(self, amount * 1.1) # using super is much better, saves the self arg
+        super().give_raise(amount * bonus)
 
 
 mgr = Manager("Alex", 90000, "Engineering")
@@ -31,8 +31,8 @@ print(mgr.salary)
 
 
 # class Employee {
-#     static MIN_SALARY = 30_000;	
-    
+#     static MIN_SALARY = 30_000;
+
 #     constructor(
 #         public name: string,
 #         public salary: number = Employee.MIN_SALARY

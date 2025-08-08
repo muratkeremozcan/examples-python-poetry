@@ -18,24 +18,27 @@ import pytest
 # beforeEach         | @pytest.fixture(autouse=True)
 # afterEach          | Code after yield in an autouse fixture
 
+
 @pytest.fixture(autouse=True)
 def prepare_data():
     # Setup: Runs before each test
     data = [i for i in range(10)]
-    
+
     # The test runs at this point
     yield data
-    
+
     # Teardown: Runs after each test
     # Use yield if you need teardown code that runs after the test
     # Use return for simpler cases without teardown
     # in Pytest you never need teardown, it handles it (but these examples show it for some reason)
     # data.clear()
 
+
 def test_elements(prepare_data):
     # prepare_data is automatically provided by the autouse fixture
     assert 9 in prepare_data
     assert 10 not in prepare_data
+
 
 # Pytest is designed to handle cleanup automatically, just like Jest. The only times you'd need to think about teardown are the rare edge cases like:
 

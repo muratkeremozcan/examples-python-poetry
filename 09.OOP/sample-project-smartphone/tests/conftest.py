@@ -10,6 +10,7 @@ if project_root not in sys.path:
 
 from prepare_smartphone_data import prepare_smartphone_data
 
+
 @pytest.fixture
 def clean_smartphone_data():
     """Fixture to load and clean smartphone data."""

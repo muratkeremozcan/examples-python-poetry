@@ -4,6 +4,7 @@
 
 import unittest
 
+
 class TestWord(unittest.TestCase):
     # Fixture setup method
     def setUp(self):
@@ -11,11 +12,11 @@ class TestWord(unittest.TestCase):
 
     # Test method
     def test_the_word(self):
-				# Create three tests to check that B and y are not in the list, and b is.
+        # Create three tests to check that B and y are not in the list, and b is.
         self.assertNotIn("B", self.word)
         self.assertNotIn("y", self.word)
         self.assertIn("b", self.word)
-    
+
     # Fixture teardown method
     def tearDown(self):
         # Use del when you want to completely remove the attribute
@@ -24,17 +25,20 @@ class TestWord(unittest.TestCase):
 
 ############
 
+
 def check_palindrome(string):
     reversed_string = string[::-1]
     return string == reversed_string
 
+
 def create_data():
-    return ['level', 'step', 'peep', 'toot']
+    return ["level", "step", "peep", "toot"]
+
 
 class TestPalindrome(unittest.TestCase):
     def setUp(self):
         self.data = create_data()
-    
+
     def test_func(self):
         expected_result = [True, False, True, True]
         data_checked = list(map(check_palindrome, self.data))

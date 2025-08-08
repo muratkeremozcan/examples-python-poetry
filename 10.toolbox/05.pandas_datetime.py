@@ -9,7 +9,7 @@
 # 3. Boolean Masking and Filtering:
 #    - Create boolean masks for filtering: df['col1'] == df['col2'] (ex: joyrides = rides['Start station'] == rides['End station'])
 #    - Filter data using boolean masks: df[mask] (ex: joyrides = rides[joyrides])
-#    - Use .sum() on boolean masks to count True values 
+#    - Use .sum() on boolean masks to count True values
 #
 # 4. Statistical Analysis:
 #    - Use median() for duration analysis (less affected by outliers than mean)
@@ -27,7 +27,7 @@
 # 7. Visualization:
 #    - Set y-axis limits: .plot(ylim=[min, max])
 #    - Display plots: plt.show()
-# 
+#
 # 8. Timezone Handling:
 #    - Localize: df['ts'] = df['ts'].dt.tz_localize('America/New_York', ambiguous='NaT')
 #    - Convert:  df['ts'] = df['ts'].dt.tz_convert('Europe/London')
@@ -51,33 +51,33 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, "capital-onebike.csv")
 
 # Read CSV and parse date columns into datetime objects
-rides = pd.read_csv(csv_path, parse_dates=['Start date', 'End date'])
+rides = pd.read_csv(csv_path, parse_dates=["Start date", "End date"])
 print(rides.iloc[0])
 
 # Calculate time differences between end and start dates
 # This creates a timedelta64[ns] Series
-ride_durations = rides['End date'] - rides['Start date']
+ride_durations = rides["End date"] - rides["Start date"]
 
 # Convert timedelta to total seconds for easier analysis
 # dt accessor provides datetime properties/methods
-rides['Duration'] = ride_durations.dt.total_seconds()
-print(rides['Duration'].head())
+rides["Duration"] = ride_durations.dt.total_seconds()
+print(rides["Duration"].head())
 
 
 ###########
 # Boolean mask to identify joyrides (start and end at same station)
 # This creates a Series of True/False values where True indicates a joyride
-joyrides = rides['Start station'] == rides['End station']
+joyrides = rides["Start station"] == rides["End station"]
 print("{} rides were joyrides".format(joyrides.sum()))
 
 # Median is used instead of mean because it's less affected by outliers
-print("Median ride duration: {} seconds".format(rides['Duration'].median()))
+print("Median ride duration: {} seconds".format(rides["Duration"].median()))
 
 # Filter the DataFrame using the boolean mask and calculate median duration
 # This is an example of boolean indexing in pandas
-print("Median joyride duration: {} seconds".format(
-    rides[joyrides]['Duration'].median()
-))
+print(
+    "Median joyride duration: {} seconds".format(rides[joyrides]["Duration"].median())
+)
 
 import matplotlib.pyplot as plt
 
@@ -101,46 +101,45 @@ import matplotlib.pyplot as plt
 # '15T' = 15 minutes
 # '30S' = 30 seconds
 
-rides.resample('D', on = 'Start date')\
-  .size()\
-  .plot(ylim = [0, 15]) # line plot with y limit
+rides.resample("D", on="Start date").size().plot(ylim=[0, 15])  # line plot with y limit
 
 # plt.show() # optional
 
 
 # resample and just select 'Member type' column from the resampled DataFrame
-monthly_rides = rides.resample('M', on = 'Start date')['Member type']
+monthly_rides = rides.resample("M", on="Start date")["Member type"]
 
 # Take the ratio of the .value_counts() over the total number of rides
 print(monthly_rides.value_counts() / monthly_rides.size())
 
 # Group rides by member type, and resample to the month
-grouped = rides.groupby('Member type')\
-  .resample('M', on = 'Start date')
+grouped = rides.groupby("Member type").resample("M", on="Start date")
 
 # Print the median duration for each group
-print(grouped['Duration'].median())
+print(grouped["Duration"].median())
 
 ####
 # Localize the Start date column to America/New_York
-rides['Start date'] = rides['Start date'].dt.tz_localize('America/New_York', ambiguous='NaT')
+rides["Start date"] = rides["Start date"].dt.tz_localize(
+    "America/New_York", ambiguous="NaT"
+)
 
-print(rides['Start date'].iloc[0])
+print(rides["Start date"].iloc[0])
 
 # Convert the Start date column to Europe/London
-rides['Start date'] = rides['Start date'].dt.tz_convert('Europe/London')
-print(rides['Start date'].iloc[0])
+rides["Start date"] = rides["Start date"].dt.tz_convert("Europe/London")
+print(rides["Start date"].iloc[0])
 
 # Add a column for the weekday of the start of the ride
-rides['Ride start weekday'] = rides['Start date'].dt.day_name()
+rides["Ride start weekday"] = rides["Start date"].dt.day_name()
 # Print the median trip time per weekday
-print(rides.groupby('Ride start weekday')['Duration'].median())
+print(rides.groupby("Ride start weekday")["Duration"].median())
 
 # Shift the index of the end date up one; now subtract it from the start date
-rides['Time since'] = rides['Start date'] - rides['End date'].shift(1)
+rides["Time since"] = rides["Start date"] - rides["End date"].shift(1)
 # Move from a timedelta to a number of seconds, which is easier to work with
-rides['Time since'] = rides['Time since'].dt.total_seconds()
+rides["Time since"] = rides["Time since"].dt.total_seconds()
 # Resample to the month
-monthly_rides = rides.resample('M', on = 'Start date')
+monthly_rides = rides.resample("M", on="Start date")
 # Print the average hours between rides each month
-print(monthly_rides['Time since'].mean() / 3600)
+print(monthly_rides["Time since"].mean() / 3600)

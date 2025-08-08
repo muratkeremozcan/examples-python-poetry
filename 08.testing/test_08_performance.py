@@ -1,43 +1,53 @@
 # benchmark(target_func, arg1, arg2..) style: directly passes the target function and its args for measurement.
 # @benchmark decorator style: wraps an inner function so you can benchmark arbitrary code blocks inline.
 
+
 def create_list():
     return [i for i in range(1000)]
+
+
 def create_set():
     return set([i for i in range(1000)])
+
+
 def find(it, el=50):
     return el in it
+
 
 def test_list(benchmark):
     benchmark(find, create_list())
     # Relaxed threshold for CI variability (~700ns mean observed in CI)
-    benchmark.extra_info['threshold'] = '800ns'
-    assert benchmark.stats['mean'] < 800e-9  # 800ns in seconds
+    benchmark.extra_info["threshold"] = "800ns"
+    assert benchmark.stats["mean"] < 800e-9  # 800ns in seconds
+
 
 def test_set(benchmark):
     benchmark(find, create_set())
     # Adjusted threshold based on actual benchmark results (~102ns mean)
-    benchmark.extra_info['threshold'] = '150ns'
-    assert benchmark.stats['mean'] < 150e-9  # 150ns in seconds
-	
+    benchmark.extra_info["threshold"] = "150ns"
+    assert benchmark.stats["mean"] < 150e-9  # 150ns in seconds
+
+
 # in decorator style
 def test_list2(benchmark):
     @benchmark
     def bench_find_list():
         find(create_list())
-    
+
     # Increased threshold to account for CI variability (~26.2μs observed in CI)
-    benchmark.extra_info['threshold'] = '30μs'
-    assert benchmark.stats['mean'] < 30e-6  # 30 microseconds in seconds
+    benchmark.extra_info["threshold"] = "30μs"
+    assert benchmark.stats["mean"] < 30e-6  # 30 microseconds in seconds
+
 
 def test_set2(benchmark):
     @benchmark
     def bench_find_set():
         find(create_set())
-    
+
     # Adjusted threshold based on actual benchmark results (~35μs mean)
-    benchmark.extra_info['threshold'] = '40μs'
-    assert benchmark.stats['mean'] < 40e-6  # 40 microseconds in seconds
+    benchmark.extra_info["threshold"] = "40μs"
+    assert benchmark.stats["mean"] < 40e-6  # 40 microseconds in seconds
+
 
 # Name (time in ns)          Min                   Max                Mean             StdDev              Median                IQR             Outliers  OPS (Mops/s)            Rounds  Iterations
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,22 +70,24 @@ def test_set2(benchmark):
 
 # In short, all four metrics agree: find on a set is faster and more predictable than on a list.
 
+
 def test_iterate_list(benchmark):
     @benchmark
     def bench_iterate_list():
         for _ in [i for i in range(1000)]:
             pass
-    
+
     # Adjusted threshold based on actual benchmark results (~29.4μs mean)
-    benchmark.extra_info['threshold'] = '35μs'
-    assert benchmark.stats['mean'] < 35e-6  # 35 microseconds in seconds
+    benchmark.extra_info["threshold"] = "35μs"
+    assert benchmark.stats["mean"] < 35e-6  # 35 microseconds in seconds
+
 
 def test_iterate_set(benchmark):
     @benchmark
     def bench_iterate_set():
         for _ in {i for i in range(1000)}:
             pass
-    
+
     # Adjusted threshold based on actual benchmark results (~39μs mean)
-    benchmark.extra_info['threshold'] = '45μs'
-    assert benchmark.stats['mean'] < 45e-6  # 45 microseconds in seconds
+    benchmark.extra_info["threshold"] = "45μs"
+    assert benchmark.stats["mean"] < 45e-6  # 45 microseconds in seconds

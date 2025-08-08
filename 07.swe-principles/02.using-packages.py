@@ -10732,7 +10732,7 @@ datacamp_tweets_array = [
     "RT @charlyingsparks: This is so spot on. \n@DataCamp @hugobowne #DataFramedchallenge @hmason #empathy\n#datascience #datacamp ...",
     "RT @gastronomy: [DataCamp] Naive Bayes Classification using Scikit-learn --> Learn how to build and evaluate a Naive Bayes Classifier using...",
     "[DataCamp] Naive Bayes Classification using Scikit-learn --> Learn how to build and evaluate a Naive Bayes Classifi...",
-    "This is so spot on. \n@DataCamp @hugobowne #DataFramedchallenge @hmason #empathy\n#datascience #datacamp"
+    "This is so spot on. \n@DataCamp @hugobowne #DataFramedchallenge @hmason #empathy\n#datascience #datacamp",
 ]
 datacamp_tweets = "\n".join(datacamp_tweets_array)
 
@@ -10745,44 +10745,47 @@ my_document0 = Document("Hello world")
 print(my_document0.text)
 print(my_document0.tokens)
 print(my_document0.word_counts)
-print('#####')
+print("#####")
 
 my_document1 = Document(text=datacamp_tweets_array[0])
 print(my_document1.text)
 print(my_document1.tokens)
 print(my_document1.word_counts)
-print('#####')
+print("#####")
 
 # #####
 
 datacamp_doc = Document(datacamp_tweets)
 print(datacamp_doc.tokens[:5])
 print(datacamp_doc.word_counts.most_common(5))
-print('#####')
+print("#####")
 
 # #####
-print('\n---- SocialMedia class demo ----')
+print("\n---- SocialMedia class demo ----")
 dc_tweets = SocialMedia(text=datacamp_tweets)
-print('Top mentions in all tweets:')
+print("Top mentions in all tweets:")
 print(dc_tweets.mention_counts.most_common(5))
-print('Top hashtags in all tweets:')
+print("Top hashtags in all tweets:")
 print(dc_tweets.hashtag_counts.most_common(5))
 
 # Add some retweets to the dataset for demonstration
-datacamp_tweets_with_rt = 'RT @DataCamp: Learn #Python with our interactive tutorials! #DataScience\n' + datacamp_tweets
+datacamp_tweets_with_rt = (
+    "RT @DataCamp: Learn #Python with our interactive tutorials! #DataScience\n"
+    + datacamp_tweets
+)
 
-print('\n---- Tweets class demo (extends SocialMedia) ----')
+print("\n---- Tweets class demo (extends SocialMedia) ----")
 dc_twitter = Tweets(text=datacamp_tweets_with_rt)
-print('Tweets object has all SocialMedia features:')
-print(f'Top mentions: {dc_twitter.mention_counts.most_common(3)}')
-print(f'Top hashtags: {dc_twitter.hashtag_counts.most_common(3)}')
+print("Tweets object has all SocialMedia features:")
+print(f"Top mentions: {dc_twitter.mention_counts.most_common(3)}")
+print(f"Top hashtags: {dc_twitter.hashtag_counts.most_common(3)}")
 
-print('\nTweets class adds retweet functionality:')
-print(f'Retweets object type: {type(dc_twitter.retweets)}')
-print(f'Hashtags in retweets: {dc_twitter.retweets.hashtag_counts}')
-print(f'Mentions in retweets: {dc_twitter.retweets.mention_counts}')
-print('#####')
+print("\nTweets class adds retweet functionality:")
+print(f"Retweets object type: {type(dc_twitter.retweets)}")
+print(f"Hashtags in retweets: {dc_twitter.retweets.hashtag_counts}")
+print(f"Mentions in retweets: {dc_twitter.retweets.mention_counts}")
+print("#####")
 
 # Plot the hashtag counts from the SocialMedia object
-print('\nPlotting hashtag distribution:')
+print("\nPlotting hashtag distribution:")
 plot_counter(dc_tweets.hashtag_counts)
