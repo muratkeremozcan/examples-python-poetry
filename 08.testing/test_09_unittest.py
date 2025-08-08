@@ -4,14 +4,16 @@
 import unittest
 import math
 
+
 def func_factorial(number):
     if number < 0:
-        raise ValueError('Factorial is not defined for negative values')
+        raise ValueError("Factorial is not defined for negative values")
     factorial = 1
     while number > 1:
         factorial = factorial * number
         number = number - 1
     return factorial
+
 
 def is_prime(num):
     if num < 2:  # 0, 1, and negative numbers are not prime
@@ -22,15 +24,18 @@ def is_prime(num):
             return False
     return True
 
+
 class TestFactorial(unittest.TestCase):
     def test_positives(self):
         self.assertEqual(func_factorial(5), 120)
+
     def test_zero(self):
         self.assertEqual(func_factorial(0), 1)
+
     def test_negative(self):
         with self.assertRaises(ValueError):
             func_factorial(-1)
-				
+
 
 class TestPrime(unittest.TestCase):
     def test_is_prime(self):

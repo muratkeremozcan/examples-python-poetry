@@ -3,13 +3,12 @@
 from requests.exceptions import ConnectionError, HTTPError
 import requests
 
-url ="http://wronghost:3000/albums"
-try: 
-    r = requests.get(url) 
+url = "http://wronghost:3000/albums"
+try:
+    r = requests.get(url)
     r.raise_for_status()  # Enable raising errors for all error status_codes
     print(r.status_code)
-except ConnectionError as conn_err: 
-    print(f'Connection Error! {conn_err}.')
+except ConnectionError as conn_err:
+    print(f"Connection Error! {conn_err}.")
 except HTTPError as http_err:
-    print(f'HTTP error occurred: {http_err}')
-
+    print(f"HTTP error occurred: {http_err}")

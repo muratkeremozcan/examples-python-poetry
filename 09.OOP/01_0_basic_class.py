@@ -27,25 +27,27 @@
 # Polymorphism: Creating a unified interface that morphs child method behavior
 # __init__ (constructor): add data to the object when creating it
 
+
 class Employee:
-  def __init__(self, name, salary):
-    self.name = name
-    if (salary > 0):
-      self.salary = salary
-    else:
-      self.salary = 0
-      print("Invalid salary!")
-  
-  def set_name(self, new_name):
-    self.name = new_name
-	
-  def set_salary(self, new_salary):
-    self.salary = new_salary 
+    def __init__(self, name, salary):
+        self.name = name
+        if salary > 0:
+            self.salary = salary
+        else:
+            self.salary = 0
+            print("Invalid salary!")
 
-  def give_raise(self, amount):
-    self.salary += amount
+    def set_name(self, new_name):
+        self.name = new_name
 
-emp = Employee('Korel Rossi', 50000)
+    def set_salary(self, new_salary):
+        self.salary = new_salary
+
+    def give_raise(self, amount):
+        self.salary += amount
+
+
+emp = Employee("Korel Rossi", 50000)
 
 print(emp.name)
 print(emp.salary)
@@ -53,12 +55,10 @@ emp.give_raise(10000)
 print(emp.salary)
 
 
-emp.set_name('Korel Ross')
+emp.set_name("Korel Ross")
 emp.set_salary(60000)
 print(emp.name)
 print(emp.salary)
-
-
 
 
 # class Calculator {
@@ -83,18 +83,18 @@ print(emp.salary)
 
 
 class Calculator:
-	def __init__(self, num_one, num_two):
-		self.num_one = num_one
-		self.num_two = num_two
+    def __init__(self, num_one, num_two):
+        self.num_one = num_one
+        self.num_two = num_two
 
-	def addition(self):
-		return self.num_one + self.num_two
+    def addition(self):
+        return self.num_one + self.num_two
 
-	def subtraction(self):
-		return self.num_one - self.num_two
+    def subtraction(self):
+        return self.num_one - self.num_two
 
-	def multiplication(self):
-		return self.num_one * self.num_two
-		
-	def division(self):
-		return self.num_one / self.num_two
+    def multiplication(self):
+        return self.num_one * self.num_two
+
+    def division(self):
+        return self.num_one / self.num_two

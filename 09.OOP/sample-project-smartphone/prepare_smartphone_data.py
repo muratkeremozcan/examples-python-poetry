@@ -6,6 +6,7 @@
 import os
 import pandas as pd
 
+
 def prepare_smartphone_data(file_path):
     """
     Load and clean smartphone data for visualization.
@@ -26,7 +27,9 @@ def prepare_smartphone_data(file_path):
 
     # Read the raw data
     raw_data = pd.read_csv(file_path)
-    print(raw_data.head())  # TODO: For checking dataset; remove before final submission.
+    print(
+        raw_data.head()
+    )  # TODO: For checking dataset; remove before final submission.
 
     # Columns to keep for analysis
     columns_to_keep = [
@@ -36,7 +39,7 @@ def prepare_smartphone_data(file_path):
         "avg_rating",
         "processor_speed",
         "battery_capacity",
-        "screen_size"
+        "screen_size",
     ]
 
     # Check that all required columns exist
@@ -55,9 +58,11 @@ def prepare_smartphone_data(file_path):
 
     return cleaned_data
 
+
 if __name__ == "__main__":
     # This block only runs when the script is executed directly
     import os
+
     # Get the directory where this script is located
     script_dir = os.path.dirname(os.path.abspath(__file__))
     # Construct the path to the data file

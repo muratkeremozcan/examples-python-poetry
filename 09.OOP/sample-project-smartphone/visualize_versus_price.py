@@ -6,6 +6,7 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 def column_to_label(column_name):
     """
     Convert a column name to a label suitable for plot axes and titles.
@@ -23,6 +24,7 @@ def column_to_label(column_name):
         raise TypeError("column_name must be of type 'str'.")
 
     return " ".join(column_name.split("_")).title()
+
 
 def visualize_versus_price(clean_data, x):
     """
@@ -51,11 +53,12 @@ def visualize_versus_price(clean_data, x):
     plt.ylabel("Price ($)")
 
     # Add a title
-    plt.title(f"{column_to_label(x)} vs. Price", pad=20, fontsize=14, fontweight='bold')
+    plt.title(f"{column_to_label(x)} vs. Price", pad=20, fontsize=14, fontweight="bold")
 
     # Show plot
     plt.tight_layout()
     plt.show()
+
 
 def main():
     """Example usage of the visualization function."""
@@ -63,6 +66,7 @@ def main():
     # For testing, we'll just print a message
     print("This script is meant to be imported, not run directly.")
     print("Use the visualize_versus_price() function in your code.")
+
 
 if __name__ == "__main__":
     main()
